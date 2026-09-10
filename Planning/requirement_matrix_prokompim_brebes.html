@@ -1,0 +1,54 @@
+<style>
+.feat { font-size: 12px; color: var(--text-primary); background: var(--bg-accent); padding: 5px 10px; border-radius: 6px; display: block; }
+</style>
+<div style="padding:1rem 0;font-family:var(--font-sans);">
+  <div style="font-size:11px;font-weight:500;color:var(--text-secondary);letter-spacing:.4px;margin-bottom:10px;">Fitur — MoSCoW Prioritization</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px;">
+    <div style="background:var(--surface-1);border-radius:12px;padding:16px;border-left:3px solid #1D9E75;">
+      <div style="font-size:11px;font-weight:500;color:var(--text-secondary);margin-bottom:10px;">Must have</div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <span class="feat">Release berita</span>
+        <span class="feat">Sambutan (download)</span>
+        <span class="feat">Download tata upacara</span>
+        <span class="feat">Judul kegiatan</span>
+        <span class="feat">Liputan / dokumentasi</span>
+        <span class="feat">Auth admin + CRUD</span>
+        <span class="feat">Auth member (download)</span>
+        <span class="feat">Dashboard admin</span>
+        <span class="feat">Kolom penghargaan</span>
+      </div>
+    </div>
+    <div style="background:var(--surface-1);border-radius:12px;padding:16px;border-left:3px solid #378ADD;">
+      <div style="font-size:11px;font-weight:500;color:var(--text-secondary);margin-bottom:10px;">Should have</div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <span class="feat">E-Koran</span>
+        <span class="feat">Komentar pengunjung</span>
+        <span class="feat">Galeri foto</span>
+      </div>
+    </div>
+    <div style="background:var(--surface-1);border-radius:12px;padding:16px;border-left:3px solid var(--border-strong);">
+      <div style="font-size:11px;font-weight:500;color:var(--text-secondary);margin-bottom:10px;">Could have</div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <span class="feat">Agenda pimpinan</span>
+        <span class="feat">Profil pimpinan</span>
+        <span class="feat">Breaking news ticker</span>
+        <span class="feat">Counter pengunjung</span>
+      </div>
+    </div>
+  </div>
+  <div style="font-size:11px;font-weight:500;color:var(--text-secondary);letter-spacing:.4px;margin-bottom:10px;">User Roles</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+    <div style="background:var(--surface-1);border-radius:10px;padding:14px;">
+      <div style="font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:4px;">Guest</div>
+      <div style="font-size:12px;color:var(--text-secondary);">Baca berita, lihat galeri, lihat judul kegiatan</div>
+    </div>
+    <div style="background:var(--surface-1);border-radius:10px;padding:14px;">
+      <div style="font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:4px;">Member</div>
+      <div style="font-size:12px;color:var(--text-secondary);">+ Login, download sambutan, tata upacara, e-koran</div>
+    </div>
+    <div style="background:var(--surface-1);border-radius:10px;padding:14px;">
+      <div style="font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:4px;">Admin</div>
+      <div style="font-size:12px;color:var(--text-secondary);">+ CRUD semua konten, kelola pengguna member</div>
+    </div>
+  </div>
+</div>
