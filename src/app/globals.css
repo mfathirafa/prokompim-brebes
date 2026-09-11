@@ -39,6 +39,13 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+
+  /* Brand colors */
+  --color-brand-sky: var(--brand-sky);
+  --color-brand-red: var(--brand-red);
+  --color-brand-gold: var(--brand-gold);
+  --color-brand-green: var(--brand-green);
+
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -49,73 +56,90 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.147 0.004 49.3);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.147 0.004 49.3);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.147 0.004 49.3);
-  --primary: oklch(0.214 0.009 43.1);
-  --primary-foreground: oklch(0.986 0.002 67.8);
-  --secondary: oklch(0.96 0.002 17.2);
-  --secondary-foreground: oklch(0.214 0.009 43.1);
-  --muted: oklch(0.96 0.002 17.2);
-  --muted-foreground: oklch(0.547 0.021 43.1);
-  --accent: oklch(0.96 0.002 17.2);
-  --accent-foreground: oklch(0.214 0.009 43.1);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0.005 34.3);
-  --input: oklch(0.922 0.005 34.3);
-  --ring: oklch(0.714 0.014 41.2);
-  --chart-1: oklch(0.868 0.007 39.5);
-  --chart-2: oklch(0.547 0.021 43.1);
-  --chart-3: oklch(0.438 0.017 39.3);
-  --chart-4: oklch(0.367 0.016 35.7);
-  --chart-5: oklch(0.268 0.011 36.5);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.986 0.002 67.8);
-  --sidebar-foreground: oklch(0.147 0.004 49.3);
-  --sidebar-primary: oklch(0.214 0.009 43.1);
-  --sidebar-primary-foreground: oklch(0.986 0.002 67.8);
-  --sidebar-accent: oklch(0.96 0.002 17.2);
-  --sidebar-accent-foreground: oklch(0.214 0.009 43.1);
-  --sidebar-border: oklch(0.922 0.005 34.3);
-  --sidebar-ring: oklch(0.714 0.014 41.2);
-}
-
-.dark {
-  --background: oklch(0.147 0.004 49.3);
-  --foreground: oklch(0.986 0.002 67.8);
-  --card: oklch(0.214 0.009 43.1);
-  --card-foreground: oklch(0.986 0.002 67.8);
-  --popover: oklch(0.214 0.009 43.1);
-  --popover-foreground: oklch(0.986 0.002 67.8);
-  --primary: oklch(0.922 0.005 34.3);
-  --primary-foreground: oklch(0.214 0.009 43.1);
-  --secondary: oklch(0.268 0.011 36.5);
-  --secondary-foreground: oklch(0.986 0.002 67.8);
-  --muted: oklch(0.268 0.011 36.5);
-  --muted-foreground: oklch(0.714 0.014 41.2);
-  --accent: oklch(0.268 0.011 36.5);
-  --accent-foreground: oklch(0.986 0.002 67.8);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.547 0.021 43.1);
-  --chart-1: oklch(0.868 0.007 39.5);
-  --chart-2: oklch(0.547 0.021 43.1);
-  --chart-3: oklch(0.438 0.017 39.3);
-  --chart-4: oklch(0.367 0.016 35.7);
-  --chart-5: oklch(0.268 0.011 36.5);
-  --sidebar: oklch(0.214 0.009 43.1);
-  --sidebar-foreground: oklch(0.986 0.002 67.8);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.986 0.002 67.8);
-  --sidebar-accent: oklch(0.268 0.011 36.5);
-  --sidebar-accent-foreground: oklch(0.986 0.002 67.8);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.547 0.021 43.1);
-}
+    /* ── Shadcn core ── */
+    --background:          0 0% 100%;
+    --foreground:          222 47% 11%;
+ 
+    --card:                0 0% 100%;
+    --card-foreground:     222 47% 11%;
+ 
+    --popover:             0 0% 100%;
+    --popover-foreground:  222 47% 11%;
+ 
+    /* Primary: Deep sky blue (#0F6B99)
+       Lebih gelap dari logo blue agar teks putih di atasnya WCAG AA compliant */
+    --primary:             200 82% 33%;
+    --primary-foreground:  0 0% 100%;
+ 
+    /* Secondary: Light blue tint — hover ringan, badge subtle */
+    --secondary:           200 40% 94%;
+    --secondary-foreground: 200 82% 25%;
+ 
+    /* Accent: Light blue untuk hover state shadcn default (card, menu) */
+    --accent:              200 30% 92%;
+    --accent-foreground:   200 82% 25%;
+ 
+    /* Muted: Teks & background redup */
+    --muted:               200 20% 96%;
+    --muted-foreground:    200 10% 45%;
+ 
+    /* Destructive: Merah untuk error/delete */
+    --destructive:         0 84% 40%;
+    --destructive-foreground: 0 0% 100%;
+ 
+    /* Border & Input */
+    --border:              200 20% 88%;
+    --input:               200 20% 88%;
+    --ring:                200 82% 33%;
+ 
+    /* Border radius */
+    --radius:              0.5rem;
+ 
+    /* ── Brebes Brand Colors ──────────────────────────────────────
+       Gunakan di komponen dengan: bg-brand-sky, text-brand-red, dll.
+       Contoh: <Button className="bg-brand-red text-white">Download</Button>
+       ─────────────────────────────────────────────────────────── */
+    --brand-sky:           198 76% 52%;   /* #29ABE2 — warna logo asli, hero/dekorasi */
+    --brand-red:           358 77% 45%;   /* #CC1B22 — bawang merah, CTA Download     */
+    --brand-gold:           48 100% 48%;  /* #F5C400 — padi/bintang, penghargaan       */
+    --brand-green:         132 48% 32%;   /* #2B7A3B — kapas, status sukses            */
+  }
+ 
+  .dark {
+    --background:          222 47% 6%;
+    --foreground:          210 40% 98%;
+ 
+    --card:                222 47% 8%;
+    --card-foreground:     210 40% 98%;
+ 
+    --popover:             222 47% 8%;
+    --popover-foreground:  210 40% 98%;
+ 
+    /* Di dark mode, gunakan logo blue langsung — terlihat lebih baik */
+    --primary:             198 76% 52%;
+    --primary-foreground:  0 0% 100%;
+ 
+    --secondary:           200 20% 15%;
+    --secondary-foreground: 200 40% 80%;
+ 
+    --accent:              200 20% 18%;
+    --accent-foreground:   200 40% 80%;
+ 
+    --muted:               200 20% 15%;
+    --muted-foreground:    200 20% 55%;
+ 
+    --destructive:         0 63% 31%;
+    --destructive-foreground: 0 0% 100%;
+ 
+    --border:              200 20% 20%;
+    --input:               200 20% 20%;
+    --ring:                198 76% 52%;
+ 
+    --brand-sky:           198 76% 55%;
+    --brand-red:           358 77% 55%;
+    --brand-gold:           48 90% 55%;
+    --brand-green:         132 48% 45%;
+  }
 
 @layer base {
   * {
