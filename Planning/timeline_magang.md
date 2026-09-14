@@ -21,23 +21,23 @@ Proyek Portal Web Prokompim Brebes
 - [x] Finalisasi daftar fitur berdasarkan riset referensi
 - [x] Menentukan tech stack (Next.js + Supabase + Vercel)
 - [x] Menentukan model SDLC (Prototype)
-- [ ] Setup project Next.js
-- [ ] Konfigurasi Supabase (project, auth, database)
-- [ ] Membuat ERD database
+- [x] Setup project Next.js
+- [x] Konfigurasi Supabase (project, auth, database)
+- [x] Membuat ERD database
 
-**Deliverable:** Dokumen requirement lengkap, project terinisialisasi
+**Deliverable:** Dokumen requirement lengkap, project terinisialisasi (✅ Selesai)
 
 ---
 
 ### Minggu 2 (20-26 September) — Desain & Perencanaan
 **Target:**
 - [ ] Wireframe semua halaman (Figma/draw.io)
-- [ ] Desain UI/UX (warna, tipografi, komponen)
-- [ ] Finalisasi branding Brebes (logo, warna identitas)
-- [ ] Setup struktur database di Supabase
-- [ ] Buat migration dan seed data dummy
+- [x] Desain UI/UX (warna, tipografi, komponen shadcn)
+- [x] Finalisasi branding Brebes (logo, warna identitas di globals.css)
+- [x] Setup struktur database di Supabase
+- [x] Buat migration dan seed data dummy
 
-**Deliverable:** Wireframe, desain final, database ready
+**Deliverable:** Wireframe, desain final, database ready (🔄 Database & Brand Ready)
 
 ---
 
@@ -129,8 +129,8 @@ Proyek Portal Web Prokompim Brebes
 
 | Milestone | Tanggal Target | Status |
 |-----------|----------------|--------|
-| M1: Requirement & Setup Selesai | 19 September | 🔄 In Progress |
-| M2: Desain & Database Ready | 26 September | ⏳ Pending |
+| M1: Requirement & Setup Selesai | 19 September | ✅ Selesai (14 Sept) |
+| M2: Desain & Database Ready | 26 September | 🔄 In Progress (Database Ready) |
 | M3: Prototype V1 Siap Demo | 10 Oktober | ⏳ Pending |
 | M4: Iterasi Selesai | 17 Oktober | ⏳ Pending |
 | M5: Pengembangan Final Selesai | 31 Oktober | ⏳ Pending |

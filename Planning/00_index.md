@@ -16,6 +16,17 @@ Portal Web Prokompim Brebes — Sistem Informasi Release Berita dan Layanan Prot
 | 06 | [user_roles.md](./user_roles.md) | Definisi peran pengguna dan hak akses |
 | 07 | [erd.md](./erd.md) | Entity Relationship Diagram database |
 | 08 | [referensi.md](./referensi.md) | Daftar link referensi prokompim daerah lain |
+| 09 | [git_branching_strategy.md](./git_branching_strategy.md) | Panduan alur branching dan commit Git (SDLC Prototype) |
+
+---
+
+## Log Harian Magang (Daily Logs)
+
+| Tanggal | File | Catatan Utama |
+|---|---|---|
+| 10 September 2026 | [daily_log_2026-09-10.md](./daily_log_2026-09-10.md) | Inisialisasi proyek, requirement gathering, setup Next.js |
+| 11 September 2026 | [daily_log_2026-09-11.md](./daily_log_2026-09-11.md) | Test koneksi Supabase, ekstraksi warna branding Brebes |
+| 14 September 2026 | [daily_log_2026-09-14.md](./daily_log_2026-09-14.md) | Migrasi Supabase baru, seed data dummy, storage, fondasi boilerplate Next.js |
 
 ---
 
@@ -28,5 +39,5 @@ Portal Web Prokompim Brebes — Sistem Informasi Release Berita dan Layanan Prot
 | Developer | Rafa (Magang) |
 | Periode Magang | 13 September 2026 - 12 November 2026 |
 | Model SDLC | Prototype |
-| Tech Stack | Next.js + Supabase + Vercel |
-| Status | Fase 1 - Requirement Gathering |
+| Tech Stack | Next.js 16 + Supabase + Vercel |
+| Status | Fase 2 - Desain & Fondasi Siap Coding UI |
