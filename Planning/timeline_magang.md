@@ -43,13 +43,13 @@ Proyek Portal Web Prokompim Brebes
 
 ### Minggu 3 (27 September - 3 Oktober) — Prototype Fase 1
 **Target:**
-- [ ] Layout dasar (navbar, footer, responsive)
-- [ ] Halaman beranda (landing page)
+- [x] Layout dasar (navbar, footer, responsive)
+- [x] Halaman beranda (landing page dengan fetch Supabase)
 - [ ] Halaman daftar berita
 - [ ] Halaman detail berita
 - [ ] Fitur auth (login/register) dengan Supabase Auth
 
-**Deliverable:** Prototype halaman publik dasar
+**Deliverable:** Prototype halaman publik dasar (🔄 Sedang Berjalan)
 
 ---
 

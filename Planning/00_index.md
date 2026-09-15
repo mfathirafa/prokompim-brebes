@@ -27,6 +27,7 @@ Portal Web Prokompim Brebes — Sistem Informasi Release Berita dan Layanan Prot
 | 10 September 2026 | [daily_log_2026-09-10.md](./daily_log_2026-09-10.md) | Inisialisasi proyek, requirement gathering, setup Next.js |
 | 11 September 2026 | [daily_log_2026-09-11.md](./daily_log_2026-09-11.md) | Test koneksi Supabase, ekstraksi warna branding Brebes |
 | 14 September 2026 | [daily_log_2026-09-14.md](./daily_log_2026-09-14.md) | Migrasi Supabase baru, seed data dummy, storage, fondasi boilerplate Next.js |
+| 15 September 2026 | [daily_log_2026-09-15.md](./daily_log_2026-09-15.md) | Perbaikan layout Navbar & Footer, normalisasi CSS branding Brebes, integrasi Beranda dengan Supabase SSR |
 
 ---
 
@@ -40,4 +41,4 @@ Portal Web Prokompim Brebes — Sistem Informasi Release Berita dan Layanan Prot
 | Periode Magang | 13 September 2026 - 12 November 2026 |
 | Model SDLC | Prototype |
 | Tech Stack | Next.js 16 + Supabase + Vercel |
-| Status | Fase 2 - Desain & Fondasi Siap Coding UI |
+| Status | Fase 3 - Prototype Fase 1 (Layout & Beranda Selesai, Menuju Modul Berita) |

@@ -55,91 +55,58 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-:root {
-    /* ── Shadcn core ── */
-    --background:          0 0% 100%;
-    --foreground:          222 47% 11%;
- 
-    --card:                0 0% 100%;
-    --card-foreground:     222 47% 11%;
- 
-    --popover:             0 0% 100%;
-    --popover-foreground:  222 47% 11%;
- 
-    /* Primary: Deep sky blue (#0F6B99)
-       Lebih gelap dari logo blue agar teks putih di atasnya WCAG AA compliant */
-    --primary:             200 82% 33%;
-    --primary-foreground:  0 0% 100%;
- 
-    /* Secondary: Light blue tint — hover ringan, badge subtle */
-    --secondary:           200 40% 94%;
-    --secondary-foreground: 200 82% 25%;
- 
-    /* Accent: Light blue untuk hover state shadcn default (card, menu) */
-    --accent:              200 30% 92%;
-    --accent-foreground:   200 82% 25%;
- 
-    /* Muted: Teks & background redup */
-    --muted:               200 20% 96%;
-    --muted-foreground:    200 10% 45%;
- 
-    /* Destructive: Merah untuk error/delete */
-    --destructive:         0 84% 40%;
-    --destructive-foreground: 0 0% 100%;
- 
-    /* Border & Input */
-    --border:              200 20% 88%;
-    --input:               200 20% 88%;
-    --ring:                200 82% 33%;
- 
-    /* Border radius */
-    --radius:              0.5rem;
- 
-    /* ── Brebes Brand Colors ──────────────────────────────────────
-       Gunakan di komponen dengan: bg-brand-sky, text-brand-red, dll.
-       Contoh: <Button className="bg-brand-red text-white">Download</Button>
-       ─────────────────────────────────────────────────────────── */
-    --brand-sky:           198 76% 52%;   /* #29ABE2 — warna logo asli, hero/dekorasi */
-    --brand-red:           358 77% 45%;   /* #CC1B22 — bawang merah, CTA Download     */
-    --brand-gold:           48 100% 48%;  /* #F5C400 — padi/bintang, penghargaan       */
-    --brand-green:         132 48% 32%;   /* #2B7A3B — kapas, status sukses            */
-  }
- 
-  .dark {
-    --background:          222 47% 6%;
-    --foreground:          210 40% 98%;
- 
-    --card:                222 47% 8%;
-    --card-foreground:     210 40% 98%;
- 
-    --popover:             222 47% 8%;
-    --popover-foreground:  210 40% 98%;
- 
-    /* Di dark mode, gunakan logo blue langsung — terlihat lebih baik */
-    --primary:             198 76% 52%;
-    --primary-foreground:  0 0% 100%;
- 
-    --secondary:           200 20% 15%;
-    --secondary-foreground: 200 40% 80%;
- 
-    --accent:              200 20% 18%;
-    --accent-foreground:   200 40% 80%;
- 
-    --muted:               200 20% 15%;
-    --muted-foreground:    200 20% 55%;
- 
-    --destructive:         0 63% 31%;
-    --destructive-foreground: 0 0% 100%;
- 
-    --border:              200 20% 20%;
-    --input:               200 20% 20%;
-    --ring:                198 76% 52%;
- 
-    --brand-sky:           198 76% 55%;
-    --brand-red:           358 77% 55%;
-    --brand-gold:           48 90% 55%;
-    --brand-green:         132 48% 45%;
-  }
+:root {                                                                                                             
+      --background:             hsl(0 0% 100%);                                                                         
+      --foreground:             hsl(222 47% 11%);                                                                       
+      --card:                   hsl(0 0% 100%);                                                                         
+      --card-foreground:        hsl(222 47% 11%);                                                                       
+      --popover:                hsl(0 0% 100%);                                                                         
+      --popover-foreground:     hsl(222 47% 11%);                                                                       
+      --primary:                hsl(200 82% 33%);                                                                       
+      --primary-foreground:     hsl(0 0% 100%);                                                                         
+      --secondary:              hsl(200 40% 94%);                                                                       
+      --secondary-foreground:   hsl(200 82% 25%);                                                                       
+      --accent:                 hsl(200 30% 92%);                                                                       
+      --accent-foreground:      hsl(200 82% 25%);                                                                       
+      --muted:                  hsl(200 20% 96%);                                                                       
+      --muted-foreground:       hsl(200 10% 45%);                                                                       
+      --destructive:            hsl(0 84% 40%);                                                                         
+      --destructive-foreground: hsl(0 0% 100%);                                                                         
+      --border:                 hsl(200 20% 88%);                                                                       
+      --input:                  hsl(200 20% 88%);                                                                       
+      --ring:                   hsl(200 82% 33%);                                                                       
+      --radius:                 0.5rem;                                                                                 
+      --brand-sky:              hsl(198 76% 52%);                                                                       
+      --brand-red:              hsl(358 77% 45%);                                                                       
+      --brand-gold:             hsl(48 100% 48%);                                                                       
+      --brand-green:            hsl(132 48% 32%);                                                                       
+    }                                                                                                                   
+                                                                                                                        
+    .dark {                                                                                                             
+      --background:             hsl(222 47% 6%);                                                                        
+      --foreground:             hsl(210 40% 98%);                                                                       
+      --card:                   hsl(222 47% 8%);                                                                        
+      --card-foreground:        hsl(210 40% 98%);                                                                       
+      --popover:                hsl(222 47% 8%);                                                                        
+      --popover-foreground:     hsl(210 40% 98%);                                                                       
+      --primary:                hsl(198 76% 52%);                                                                       
+      --primary-foreground:     hsl(0 0% 100%);                                                                         
+      --secondary:              hsl(200 20% 15%);                                                                       
+      --secondary-foreground:   hsl(200 40% 80%);                                                                       
+      --accent:                 hsl(200 20% 18%);                                                                       
+      --accent-foreground:      hsl(200 40% 80%);                                                                       
+      --muted:                  hsl(200 20% 15%);                                                                       
+      --muted-foreground:       hsl(200 20% 55%);                                                                       
+      --destructive:            hsl(0 63% 31%);                                                                         
+      --destructive-foreground: hsl(0 0% 100%);                                                                         
+      --border:                 hsl(200 20% 20%);                                                                       
+      --input:                  hsl(200 20% 20%);                                                                       
+      --ring:                   hsl(198 76% 52%);                                                                       
+      --brand-sky:              hsl(198 76% 55%);                                                                       
+      --brand-red:              hsl(358 77% 55%);                                                                       
+      --brand-gold:             hsl(48 90% 55%);                                                                        
+      --brand-green:            hsl(132 48% 45%);                                                                       
+    }            
 
 @layer base {
   * {
