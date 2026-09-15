@@ -23,12 +23,12 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
-import { Menu, LogOut, LayoutDashboard, Download, User as UserIcon } from "lucide-react"
-import { link } from "fs"
+import type { User } from "@supabase/supabase-js"
+import { Menu, LogOut, LayoutDashboard, Download } from "lucide-react"
 
 export function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false)
-    const [user, setUser] = useState<any>(null)
+    const [user, setUser] = useState<User | null>(null)
     const [profile, setProfile] = useState<{ nama: string; role: string } | null>(null)
     const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -175,19 +175,21 @@ export function Navbar() {
                                 <DropdownMenuSeparator/>
 
                                 {profile?.role === "admin" && (
-                                    <DropdownMenuItem asChild>
-                                        <Link href="/admin" className="cursor-pointer flex items-center gap-2">
-                                            <LayoutDashboard className="w-4 h-4 text-brand-sky"/>
-                                            <span>Dashboard Admin</span>
-                                        </Link>
+                                    <DropdownMenuItem
+                                        render={<Link href="/admin" />}
+                                        className="cursor-pointer flex items-center gap-2"
+                                    >
+                                        <LayoutDashboard className="w-4 h-4 text-brand-sky" />
+                                        <span>Dashboard Admin</span>
                                     </DropdownMenuItem>
                                 )}
 
-                                <DropdownMenuItem asChild>
-                                    <Link href="/download" className="cursor-pointer flex items-center gap-2">
-                                        <Download className="cursor-pointer flex items-center gap-2" />
-                                        <span>Dokumen Unduhan</span>
-                                    </Link>
+                                <DropdownMenuItem
+                                    render={<Link href="/download" />}
+                                    className="cursor-pointer flex items-center gap-2"
+                                >
+                                    <Download className="w-4 h-4 text-brand-sky" />
+                                    <span>Dokumen Unduhan</span>
                                 </DropdownMenuItem>
                                 
                                 <DropdownMenuSeparator />
@@ -202,11 +204,11 @@ export function Navbar() {
                         </DropdownMenu>
                     ) : (
                         <Button
-                            asChild
+                            render={<Link href="/login" />}
                             size="sm"
                             className="rounded-full bg-brand-gold hover:bg-brand-gold/90 text-zinc-950 font-semibold px-4 shadow"
                         >
-                            <Link href="/login">Masuk</Link>
+                            Masuk
                         </Button>
                     )}
                 </div>
@@ -214,15 +216,11 @@ export function Navbar() {
                 {/* Mobile Hamburger Menu (Sheet) */}
                 <div className="md:hidden flex items-center">
                     <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-                        <SheetTrigger asChild>
-                            <Button
-                                variant="ghost"
-                                size="icon"
-                                className="text-white hover:bg-white/10 rounded-lg"
-                                aria-label="Buka Menu"
-                            >
-                                <Menu className="w-6 h-6" />
-                            </Button>
+                        <SheetTrigger
+                            className="p-2 text-white hover:bg-white/10 rounded-lg inline-flex items-center justify-center transition-colors cursor-pointer"
+                            aria-label="Buka Menu"
+                        >
+                            <Menu className="w-6 h-6" />
                         </SheetTrigger>
                         <SheetContent side="right" className="bg-primary text-white border-l-white/10 w-72 flex flex-col p-6">
                             <SheetHeader className="text-left pb-4 border-b border-white/10">
@@ -267,12 +265,12 @@ export function Navbar() {
                                             </div>
                                             {profile?.role === "admin" && (
                                                 <Button
-                                                    asChild
+                                                    render={<Link href="/admin" />}
                                                     variant="outline"
                                                     className="w-full text-white border-white/30 bg-white/5 hover:bg-white/20"
                                                     onClick={() => setMobileOpen(false)}
                                                 >
-                                                    <Link href="/admin">Dashboard Admin</Link>
+                                                    Dashboard Admin
                                                 </Button>
                                             )}
                                             <Button
@@ -288,11 +286,11 @@ export function Navbar() {
                                         </div>
                                     ) : (
                                         <Button
-                                            asChild
+                                            render={<Link href="/login" />}
                                             className="w-full bg-brand-gold hover:bg-brand-gold/90 text-zinc-950 font-semibold"
                                             onClick={() => setMobileOpen(false)}
                                         >   
-                                            <Link href="/login">Masuk ke Akun</Link>
+                                            Masuk ke Akun
                                         </Button>
                                     )}
                                 </div>

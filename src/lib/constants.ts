@@ -1,5 +1,3 @@
-import { Phone } from "lucide-react";
-
 export const SITE_CONFIG = {
     name: "Prokompim Brebes",
     fullName: "Bagian Protokol dan Komunikasi Pimpinan Kabupaten Brebes",
@@ -23,7 +21,7 @@ export const NAV_LINKS = [
     { label: "Download", href: "/download" },
     { label: "Penghargaan", href: "/penghargaan" },
     { label: "Kegiatan", href: "/kegiatan" },
-    { labe: "E-Koran", href: "/e-koran" },
+    { label: "E-Koran", href: "/e-koran" },
 ]
 
 export const ADMIN_SIDEBAR_LINKS = [

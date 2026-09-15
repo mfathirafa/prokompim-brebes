@@ -1,3 +1,4 @@
+import { SupabaseClient } from "@supabase/supabase-js";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -65,14 +66,14 @@ export function truncate(text: string, maxLength: number): string {
 
 // Signed URL untuk download file dari Supabase Storage (private bucket)
 export async function getSignedDownloadUrl(
-    supabase: any,
+    supabase: SupabaseClient,
     bucket: string,
     filePath: string,
     expiresIn = 60
 ): Promise<string | null> {
     const { data, error } = await supabase.storage
         .from(bucket)
-        .createdSignedUrl(filePath, expiresIn)
+        .createSignedUrl(filePath, expiresIn)
 
     if ( error || !data ) return null
     return data.signedUrl

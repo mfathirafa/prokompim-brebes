@@ -1,11 +1,10 @@
-import { count } from "console";
 import { createClient } from "./client";
 
 export async function testConnection() {
     const supabase = createClient()
 
     try {
-        const { data, error } = await supabase.from("profiles").select("count", { count: "exact", head: true })
+        const { error } = await supabase.from("profiles").select("count", { count: "exact", head: true })
 
         if (error) {
             console.log("❌ Koneksi gagal:", error.message)

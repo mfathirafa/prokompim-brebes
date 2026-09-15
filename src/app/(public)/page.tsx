@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Newspaper, Camera } from "lucide-react";
+import { Newspaper, Camera } from "lucide-react";
 
 export default function HomePage() {
   return (
@@ -10,7 +10,7 @@ export default function HomePage() {
       <section className="relative min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-primary via-primary/95 to-brand-sky text-white px-4 pt-28 pb-20 overflow-hidden">
       
         {/*Ornamen Latar Belakang */}
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px, transparent_1px)] [backgorund-size:16px_16px] pointer-events-none" />
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_11px, transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 
         <div className="relative max-w-4xl mx-auto text-center space-y-6">
           <div className="flex justify-center">
@@ -40,27 +40,21 @@ export default function HomePage() {
                                                                                                                         
               <div className="flex flex-wrap items-center justify-center gap-3 pt-4">                                   
                 <Button                                                                                                 
-                  asChild                                                                                               
+                  render={<Link href="/berita" />}                                                                                               
                   size="lg"                                                                                             
-                  className="bg-brand-red hover:bg-brand-red/90 text-white font-semibold rounded-full px-6 shadow-lg    
-  shadow-brand-red/30 gap-2"                                                                                            
+                  className="bg-brand-red hover:bg-brand-red/90 text-white font-semibold rounded-full px-6 shadow-lg shadow-brand-red/30 gap-2"                                                                                            
                 >                                                                                                       
-                  <Link href="/berita">                                                                                 
                     <Newspaper className="w-4 h-4" />                                                                   
                     Baca Berita Rilis                                                                                   
-                  </Link>                                                                                               
                 </Button>                                                                                               
-                <Button                                                                                                 
-                  asChild                                                                                               
+                <Button             
+                  render={<Link href="/liputan" />}                                                                                    
                   size="lg"                                                                                             
                   variant="outline"                                                                                     
-                  className="border-white/30 text-white bg-white/10 hover:bg-white hover:text-primary font-semibold     
-  rounded-full px-6 backdrop-blur-sm gap-2"                                                                             
-                >                                                                                                       
-                  <Link href="/liputan">                                                                                
+                  className="border-white/30 text-white bg-white/10 hover:bg-white hover:text-primary font-semibold rounded-full px-6 backdrop-blur-sm gap-2"                                                                             
+                >                                                                                
                     <Camera className="w-4 h-4" />                                                                      
-                    Galeri Liputan                                                                                      
-                  </Link>                                                                                               
+                    Galeri Liputan                                                                                                                                                                           
                 </Button>                                                                                               
               </div>                                                                                                    
             </div>                                                                                                      

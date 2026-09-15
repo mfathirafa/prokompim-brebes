@@ -1,7 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { NextResponse } from "next/server";
 import { STORAGE_BUCKETS } from "@/lib/constants";
-import { error } from "console";
 
 export async function POST(
     request: Request,
@@ -15,7 +14,7 @@ export async function POST(
         data: { user },
     } = await supabase.auth.getUser()
     if (!user) {
-        return NextResponse.json({ error: "Unauthotized" }, { status: 401 })
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
     // Ambil detail file

@@ -17,7 +17,7 @@ export default function TestDbPage() {
             const supabase = createClient()
 
             // Test 1: Cek apakah bisa connect ke Supabase
-            const { data: { user }, error: authError } = await supabase.auth.getUser()
+            const { error: authError } = await supabase.auth.getUser()
 
             if (authError && authError.message !== "Auth session missing!") {
                 throw new Error(`Auth error: ${authError.message}`)
