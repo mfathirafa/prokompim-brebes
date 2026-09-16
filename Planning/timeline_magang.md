@@ -45,8 +45,8 @@ Proyek Portal Web Prokompim Brebes
 **Target:**
 - [x] Layout dasar (navbar, footer, responsive)
 - [x] Halaman beranda (landing page dengan fetch Supabase)
-- [ ] Halaman daftar berita
-- [ ] Halaman detail berita
+- [x] Halaman daftar berita
+- [x] Halaman detail berita
 - [ ] Fitur auth (login/register) dengan Supabase Auth
 
 **Deliverable:** Prototype halaman publik dasar (🔄 Sedang Berjalan)
