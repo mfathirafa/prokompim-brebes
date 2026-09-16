@@ -3,13 +3,13 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { Button } from "@/components/ui/button";
 import { formatDate } from "@/lib/utils";
+import { BeritaCard } from "@/components/berita/berita-card";
 import {
   Newspaper,
   Camera,
   ArrowRight,
   Trophy,
   Calendar,
-  Eye,
   Building2
 } from "lucide-react";
 
@@ -131,53 +131,17 @@ export default async function HomePage() {
         {beritaList && beritaList.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {beritaList.map((item) => (
-              <article
+              <BeritaCard 
                 key={item.id}
-                className="group flex flex-col bg-card rounded-2xl border border-border overflow-hidden hover:shadow-xl transition-all duration-300"
-              >
-                <div className="relative aspect-video w-full bg-muted overflow-hidden">
-                  <Image 
-                    src={item.gambar_url || "/logo.png"}
-                    alt={item.judul}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <span className="absolute top-3 left-3 bg-primary/90 backdrop-blur-sm text-white text-[11px] font-semibold px-3 py-1 rounded-full shadow">
-                    {item.kategori_berita?.nama || "Berita"}
-                  </span>
-                </div>
-
-                <div className="p-6 flex flex-col flex-1">
-                  <div className="flex items-center gap-4 text-xs text-muted-foreground mb-3">
-                    <span className="flex items-center gap-1">
-                       <Calendar className="w-3.5 h-3.5"/>
-                       {item.published_at ? formatDate(item.published_at) : "-"}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Eye className="w-3.5 h-3.5" />
-                      {item.views || 0}
-                    </span>
-                  </div>
-
-                  <h3 className="font-bold text-lg leading-snug line-clamp-2 group-hover:text-primary transition-colors mb-2">
-                    <Link href={`/berita/${item.slug}`}>
-                      {item.judul}
-                    </Link>
-                  </h3>
-
-                  <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed mb-4 flex-1">
-                    {item.ringkasan || "Klik untuk membaca berita selengkapnya..."}
-                  </p>
-
-                  <Link
-                    href={`/berita/${item.slug}`}
-                    className="text-xs font-semibold text-primary hover:text-primary/80 inline-flex items-center gap-1 mt-auto"
-                  >
-                    Baca Selengkapnya <ArrowRight className="w-3.5 h-3.5"/>
-                  </Link>
-                </div>
-              </article>
+                id={item.id}
+                judul={item.judul}
+                slug={item.slug}
+                ringkasan={item.ringkasan}
+                gambar_url={item.gambar_url}
+                views={item.views}
+                published_at={item.published_at}
+                kategori={item.kategori_berita}
+              />
             ))}
           </div>
         ) : (
