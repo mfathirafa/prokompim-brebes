@@ -47,9 +47,9 @@ Proyek Portal Web Prokompim Brebes
 - [x] Halaman beranda (landing page dengan fetch Supabase)
 - [x] Halaman daftar berita
 - [x] Halaman detail berita
-- [ ] Fitur auth (login/register) dengan Supabase Auth
+- [x] Fitur auth (login/register) dengan Supabase Auth
 
-**Deliverable:** Prototype halaman publik dasar (🔄 Sedang Berjalan)
+**Deliverable:** Prototype halaman publik dasar (✅ Fitur Publik & Auth Siap)
 
 ---
 
