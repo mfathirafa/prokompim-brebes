@@ -149,18 +149,13 @@ export function Navbar() {
                 <div className="hidden md:flex items-center gap-3">
                     {user ? (
                         <DropdownMenu>
-                            <DropdownMenuTrigger>
-                                <Button
-                                    variant="ghost"
-                                    className="flex items-center gap-2 text-white hover:bg-white/15 rounded-full px-3 py-1.5 h-auto"
-                                >
-                                    <div className="w-7 h-7 rounded-full bg-brand-gold text-primary font-bold flex items-center justify-center text-xs">
-                                        {(profile?.nama || user.email)?.[0]?.toUpperCase()}
-                                    </div>
-                                    <span className="text-sm font-medium max-w-[120px] truncate">
-                                        {profile?.nama || "Member"}
-                                    </span>
-                                </Button>
+                            <DropdownMenuTrigger className="flex items-center gap-2 text-white hover:bg-white/15 rounded-full px-3 py-1.5 h-auto cursor-pointer transition-colors">
+                                <div className="w-7 h-7 rounded-full bg-brand-gold text-primary font-bold flex items-center justify-center text-xs">
+                                    {(profile?.nama || user.email)?.[0]?.toUpperCase()}
+                                </div>
+                                <span className="text-sm font-medium max-w-[120px] truncate">
+                                    {profile?.nama || "Member"}
+                                </span>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent align="end" className="w-56">
                                 <DropdownMenuLabel className="font-normal">
