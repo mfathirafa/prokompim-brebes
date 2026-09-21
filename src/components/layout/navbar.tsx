@@ -199,6 +199,7 @@ export function Navbar() {
                         </DropdownMenu>
                     ) : (
                         <Button
+                            nativeButton={false}
                             render={<Link href="/login" />}
                             size="sm"
                             className="rounded-full bg-brand-gold hover:bg-brand-gold/90 text-zinc-950 font-semibold px-4 shadow"
