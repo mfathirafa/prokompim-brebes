@@ -87,6 +87,7 @@ export default async function HomePage() {
 
           <div className="flex flex-wrap items-center justify-center gap-3 pt-4">
             <Button
+              nativeButton={false}
               render={<Link href="/berita" />}
               size="lg"
               className="bg-brand-red hover:bg-brand-red/90 text-white font-semibold rounded-full px-6 shadow-lg shadow-brand-red/30 gap-2 cursor-pointer"
@@ -95,6 +96,7 @@ export default async function HomePage() {
               Baca Berita Rilis
             </Button>
             <Button
+              nativeButton={false}
               render={<Link href="/liputan" />}
               size="lg"
               variant="outline"
@@ -120,6 +122,7 @@ export default async function HomePage() {
             </h2>
           </div>
           <Button
+            nativeButton={false}
             render={<Link href="/berita" />}
             variant="ghost"
             className="text-primary hover:text-primary/80 font-medium self-start md:self-auto gap-1.5 p-0 hover:bg-transparent"
@@ -218,6 +221,7 @@ export default async function HomePage() {
               </h2>
             </div>
             <Button
+              nativeButton={false}
               render={<Link href="/liputan" />}
               variant="ghost"
               className="text-primary hover:text-primary/80 font-medium self-start md:self-auto gap-1.5 p-0 hover:bg-transparent"

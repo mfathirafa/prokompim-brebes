@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
 import { formatDate } from "@/lib/utils";
 import { ViewIncrementer } from "@/components/berita/view-incrementer";
+import { KomentarSection } from "@/components/berita/komentar-section";
 import {
     Calendar,
     Eye,
@@ -84,9 +85,6 @@ export default async function BeritaDetailPage({ params }: BeritaDetailPageProps
                 nama,
                 slug,
                 warna
-            ),
-            profiles (
-                nama
             )
             `
         )
@@ -121,6 +119,14 @@ export default async function BeritaDetailPage({ params }: BeritaDetailPageProps
 
         beritaTerkait = data || [];
     }
+
+    // 4. Fetch Komentar Approved
+    const { data: komentarList } = await supabase 
+        .from("komentar")
+        .select("id, nama, isi, created_at")
+        .eq("berita_id", berita.id)
+        .eq("is_approved", true)
+        .order("created_at", { ascending: true });
 
     return (
         <div className="flex flex-col flex-1 pb-20">
@@ -209,6 +215,14 @@ export default async function BeritaDetailPage({ params }: BeritaDetailPageProps
                                 <ArrowLeft className="w-4 h-4" />
                                 Kembali ke Daftar Berita
                             </Link>
+                        </div>
+
+                        {/* Bagian Komentar Pengunjung */}
+                        <div className="mt-10 pt-10 border-t border-border">
+                            <KomentarSection
+                                beritaId={berita.id}
+                                komentarList={komentarList || []}
+                            />
                         </div>
                     </article>
 
