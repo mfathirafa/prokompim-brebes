@@ -32,12 +32,12 @@ export function KomentarSection({ beritaId, komentarList }: KomentarSectionProps
     const [isi, setIsi] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
-    const [succesMessage, setSuccesMessage] = useState<string | null>(null);
+    const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setError(null);
-        setSuccesMessage(null);
+        setSuccessMessage(null);
 
         // Validasi input sisi browser
         const trimmedNama = nama.trim();
@@ -84,7 +84,7 @@ export function KomentarSection({ beritaId, komentarList }: KomentarSectionProps
             }
 
             // Berhasil submit komentar
-            setSuccesMessage(
+            setSuccessMessage(
                 "Komentar berhasil dikirim dan menunggu moderasi admin."
             );
             setNama("");
@@ -168,10 +168,10 @@ export function KomentarSection({ beritaId, komentarList }: KomentarSectionProps
                 </div>
 
                 {/* Notifikasi Sukses */}
-                {succesMessage && (
+                {successMessage && (
                     <div className="flex items-start gap-2.5 p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs sm:text-sm leading-relaxed">
                         <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5" />
-                        <span>{succesMessage}</span>
+                        <span>{successMessage}</span>
                     </div>
                 )}
 
@@ -275,4 +275,5 @@ export function KomentarSection({ beritaId, komentarList }: KomentarSectionProps
             </div>
         </section>
     );
+
 }
