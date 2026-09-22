@@ -175,7 +175,7 @@ export default async function BeritaDetailPage({ params }: BeritaDetailPageProps
                                 </span>
                                 <span className="flex items-center gap-1.5">
                                     <User className="w-4 h-4" />
-                                    {berita.profiles?.nama || "Prokompim Setda Brebes"}
+                                    Prokompim Setda Brebes
                                 </span>
                                 <span className="flex items-center gap-1.5">
                                     <Eye className="w-4 h-4" />
