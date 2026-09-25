@@ -1,6 +1,6 @@
 # Progress Report — Portal Web Prokompim Brebes
 
-**Terakhir diperbarui:** 23 September 2026  
+**Terakhir diperbarui:** 25 September 2026  
 **Developer:** Rafa (Magang)  
 **Periode:** 13 September – 12 November 2026
 
@@ -112,7 +112,8 @@ Minggu 5–9              ░░░░░░░░░░░░   0%  ⏳ Modul A
 | 17 Sep | Modul Auth | `/login`, `/register`, layout auth, fix image URL & TypeScript |
 | 21 Sep | Liputan, Penghargaan, Kegiatan, & E-Koran | 4 halaman publik tuntas, build lolos 100%, siap demo |
 | **22 Sep** | **Fitur Komentar & Deploy Vercel (Live)** | **Fitur komentar berita tuntas, fix 404 & TS error, build lolos 100%, sukses deploy ke https://prokompim-brebeskab.vercel.app** |
-| **23 Sep** | **Fondasi Modul Panel Admin** | **Layout sidebar responsif + Dashboard stats & tabel terbaru selesai. Branch `feat/admin-panel` dibuat, WIP commit dilakukan.** |
+| **23 Sep** | **Fondasi Modul Panel Admin** | Layout sidebar responsif + Dashboard stats & tabel terbaru selesai. Branch `feat/admin-panel` dibuat, WIP commit dilakukan. |
+| **25 Sep** | **Modul Kelola Berita Admin (`/admin/berita`)** | **Server actions (`actions.ts`), client row actions (`berita-actions.tsx`), dan arsitektur halaman kelola berita (`page.tsx`) disiapkan.** |
 
 ---
 

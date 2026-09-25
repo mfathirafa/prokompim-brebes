@@ -19,8 +19,8 @@ export default async function AdminDashboardPage() {
 
     // Fetch 4 stats & data tabel secara paralel di server
     const [
-        { count: totalBeritaPublised },
-        { count: totalFileDwownload },
+        { count: totalBeritaPublished },
+        { count: totalFileDownload },
         { count: totalMember },
         { count: totalKomentarPending },
         { data: latestBerita },
@@ -79,7 +79,7 @@ export default async function AdminDashboardPage() {
     const stats = [
         {
             label: "Total Berita Published",
-            count: totalBeritaPublised ?? 0,
+            count: totalBeritaPublished ?? 0,
             icon: Newspaper,
             accentBorder: "border-l-primary",
             iconBg: "bg-primary/10 text-primary",
@@ -87,7 +87,7 @@ export default async function AdminDashboardPage() {
         },
         {
             label: "Total File Download",
-            count: totalFileDwownload ?? 0,
+            count: totalFileDownload ?? 0,
             icon: Download,
             accentBorder: "border-l-brand-sky",
             iconBg: "bg-brand-sky/15 text-brand-sky",
@@ -121,7 +121,7 @@ export default async function AdminDashboardPage() {
                         <Link
                             key={idx}
                             href={stat.href}
-                            className={`p-5 rounded-xl bg-card border border-border ${stat.accentBorder} border-l-4 shadow-xs hover:shadwo-md transition-all flex items-center justify-between group`}
+                            className={`p-5 rounded-xl bg-card border border-border ${stat.accentBorder} border-l-4 shadow-xs hover:shadow-md transition-all flex items-center justify-between group`}
                         >
                             <div>
                                 <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">
