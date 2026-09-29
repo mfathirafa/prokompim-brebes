@@ -1,6 +1,6 @@
 # Progress Report — Portal Web Prokompim Brebes
 
-**Terakhir diperbarui:** 25 September 2026  
+**Terakhir diperbarui:** 29 September 2026  
 **Developer:** Rafa (Magang)  
 **Periode:** 13 September – 12 November 2026
 
@@ -16,7 +16,7 @@
 | **Model SDLC** | Prototype |
 | **Fase Aktif** | Fase 3 — Prototype Fase 1 (Live & Siap Demo) |
 | **Live URL** | [https://prokompim-brebeskab.vercel.app](https://prokompim-brebeskab.vercel.app) |
-| **Progress Global** | `█████████¼` ~92% |
+| **Progress Global** | `█████████▌` ~94% |
 
 ---
 
@@ -56,7 +56,7 @@ Minggu 5–9              ░░░░░░░░░░░░   0%  ⏳ Modul A
 | M03 | Download Tata Upacara | ✅ **Selesai** | Tersedia di `/download` (filter kategori) |
 | M04 | Judul Kegiatan | ✅ **Selesai** | Halaman `/kegiatan` timeline vertikal |
 | M05 | Liputan / Dokumentasi | ✅ **Selesai** | Halaman `/liputan` dan detail `/liputan/[id]` |
-| M06 | Auth Admin + CRUD | ⏳ **Belum** | Dijadwalkan Minggu 6 |
+| M06 | Auth Admin + CRUD | 🔄 **Dalam Pengerjaan** | Tabel kelola berita, server actions CRUD, upload cover storage, & form tambah siap |
 | M07 | Auth Member (Login & Register) | ✅ **Selesai** | Supabase Auth SSR, redirect param & validasi |
 | M08 | Dashboard Admin | ⏳ **Belum** | Minggu 6 |
 | M09 | Kolom Penghargaan | ✅ **Selesai** | Halaman `/penghargaan` direktori penghargaan |
@@ -114,6 +114,7 @@ Minggu 5–9              ░░░░░░░░░░░░   0%  ⏳ Modul A
 | **22 Sep** | **Fitur Komentar & Deploy Vercel (Live)** | **Fitur komentar berita tuntas, fix 404 & TS error, build lolos 100%, sukses deploy ke https://prokompim-brebeskab.vercel.app** |
 | **23 Sep** | **Fondasi Modul Panel Admin** | Layout sidebar responsif + Dashboard stats & tabel terbaru selesai. Branch `feat/admin-panel` dibuat, WIP commit dilakukan. |
 | **25 Sep** | **Modul Kelola Berita Admin (`/admin/berita`)** | **Server actions (`actions.ts`), client row actions (`berita-actions.tsx`), dan arsitektur halaman kelola berita (`page.tsx`) disiapkan.** |
+| **29 Sep** | **Implementasi Penuh Tabel & Form Tambah Berita Admin** | **Halaman `/admin/berita`, server actions CRUD berita & storage upload, komponen form interaktif (`berita-form.tsx`), serta halaman tambah berita `/admin/berita/tambah` selesai dan lolos typecheck 100%.** |
 
 ---
 
