@@ -58,7 +58,7 @@ Minggu 5–9              ░░░░░░░░░░░░   0%  ⏳ Modul A
 | M05 | Liputan / Dokumentasi | ✅ **Selesai** | Halaman `/liputan` dan detail `/liputan/[id]` |
 | M06 | Auth Admin + CRUD Berita & Moderasi Komentar | ✅ **Selesai** | Tabel, tambah, edit berita, server actions CRUD, storage cover, & modul moderasi komentar selesai 100% |
 | M07 | Auth Member (Login & Register) | ✅ **Selesai** | Supabase Auth SSR, redirect param & validasi |
-| M08 | Dashboard Admin | ⏳ **Belum** | Minggu 6 |
+| M08 | Dashboard Admin | ✅ **Selesai** | Statistik 4 metrik, tabel berita terbaru, komentar pending |
 | M09 | Kolom Penghargaan | ✅ **Selesai** | Halaman `/penghargaan` direktori penghargaan |
 
 ### 🟡 Should Have
@@ -121,7 +121,7 @@ Minggu 5–9              ░░░░░░░░░░░░   0%  ⏳ Modul A
 | **23 Sep** | **Fondasi Modul Panel Admin** | Layout sidebar responsif + Dashboard stats & tabel terbaru selesai. Branch `feat/admin-panel` dibuat, WIP commit dilakukan. |
 | **25 Sep** | **Modul Kelola Berita Admin (`/admin/berita`)** | **Server actions (`actions.ts`), client row actions (`berita-actions.tsx`), dan arsitektur halaman kelola berita (`page.tsx`) disiapkan.** |
 | **29 Sep** | **Implementasi Penuh Tabel & Form Tambah Berita Admin** | **Halaman `/admin/berita`, server actions CRUD berita & storage upload, komponen form interaktif (`berita-form.tsx`), serta halaman tambah berita `/admin/berita/tambah` selesai dan lolos typecheck 100%.** |
-| **05 Okt** | **Halaman Edit Berita & Modul Moderasi Komentar Admin** | **Halaman edit berita `/admin/berita/[id]/edit`, modul moderasi komentar `/admin/komentar` (server actions, client row actions, filter tab, pencarian, pagination) selesai. Lolos lint & typecheck 100%.** |
+| **05 Okt** | **Halaman Edit Berita, Moderasi Komentar, Fix Base UI, & Auth Admin Role JWT** | **Halaman edit berita `/admin/berita/[id]/edit`, modul moderasi komentar `/admin/komentar`, fix Base UI `DropdownMenuLabel`, dan otentikasi role admin via Supabase JWT `app_metadata` tuntas. Lolos build & lint 100%.** |
 
 ---
 
@@ -146,6 +146,8 @@ Minggu 5–9              ░░░░░░░░░░░░   0%  ⏳ Modul A
 | 21 Sep | Base UI nativeButton warning pada tombol login navbar | ✅ Ditambahkan `nativeButton={false}` |
 | 22 Sep | Error 404 pada detail berita akibat *permission denied* join `profiles` | ✅ Diperbaiki (hilangkan join unauthorized) |
 | 22 Sep | TS2339 referensi `berita.profiles` pada build time | ✅ Diperbaiki (fallback static string author) |
+| 05 Okt | Crash Base UI `MenuGroupContext` pada `DropdownMenuLabel` | ✅ Diperbaiki (refactor ke custom div) |
+| 05 Okt | Postgres error 42501 (permission denied) pada tabel `profiles` | ✅ Diperbaiki (migrasi ke role JWT `app_metadata`) |
 
 ---
 

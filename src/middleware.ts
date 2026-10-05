@@ -42,12 +42,10 @@ export async function middleware(request: NextRequest) {
         if (!user) {
             return NextResponse.redirect(new URL("/login", request.url))
         }
-        const { data: profile } = await supabase
-            .from("profiles")
-            .select("role")
-            .eq("id", user.id)
-            .single()
-        if (profile?.role !== "admin") {
+
+        // Cek role dari app_metadata / user_metadata JWT (tidak perlu query DB, bypass RLS)
+        const role = user.app_metadata?.role || user.user_metadata?.role
+        if (role !== "admin") {
             return NextResponse.redirect(new URL("/", request.url))
         }
     }
@@ -57,4 +55,4 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
     matcher: ["/download/:path*", "/admin/:path*"],
-}
+}
