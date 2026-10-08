@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { Button } from "@/components/ui/button";
 import { formatDate } from "@/lib/utils";
 import { BeritaCard } from "@/components/berita/berita-card";
+import { BreakingNewsTicker } from "@/components/berita/breaking-news-ticker";
 import {
   Newspaper,
   Camera,
@@ -108,6 +109,19 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* --- BREAKING NEWS TICKER --- */}
+      {beritaList && beritaList.length > 0 && (
+        <BreakingNewsTicker
+          items={beritaList.map((b) => ({
+            id: b.id,
+            judul: b.judul,
+            slug: b.slug,
+            published_at: b.published_at,
+            kategori: b.kategori_berita,
+          }))}
+        />
+      )}
 
       {/* --- SECTION 1: RILIS BERITA TERBARU --- */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">

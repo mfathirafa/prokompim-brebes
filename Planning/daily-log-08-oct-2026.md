@@ -31,32 +31,43 @@ Hari ini berhasil menyelesaikan modul panel admin terakhir yang direncanakan, ya
    - Form pencarian multi-field (pencarian nama, email, nomor HP).
    - Tabel responsif dengan avatar initial berwarna khusus, badge role terverifikasi, nomor HP, badge status keaktifan, tanggal terdaftar, dan tombol aksi interaktif.
    - Paginasi server-side 10 pengguna per halaman (`ADMIN_ITEMS_PER_PAGE = 10`).
-
-### Sesi Pengujian & Validasi Kualitas Kode:
-5. **ESLint (`npm run lint`)**: **0 errors, 0 warnings (100% clean)**.
-6. **Next.js Turbopack Build (`npm run build`)**: **100% SUKSES**, total **26 rute** aplikasi terkompilasi optimal tanpa satupun error TypeScript.
-
----
-
-## 2. Rincian Modul yang Diselesaikan Hari Ini
-
-| Modul Admin | Path Rute | Fitur Utama | Status |
-|---|---|---|---|
-| **Manajemen Pengguna** | `/admin/users` | Filter tab role & status, search, toggle aktif/nonaktif, ubah role admin/member, hapus akun, proteksi superadmin | ✅ Selesai 100% |
-
----
-
-## 3. Rincian File yang Dibuat & Dimodifikasi
-
-| No | Path File | Status | Keterangan |
-|---|---|---|---|
-| 1 | `src/lib/supabase/admin.ts` | File Baru | Utility Supabase Admin Client dengan `SUPABASE_SERVICE_ROLE_KEY` |
-| 2 | `src/app/admin/users/actions.ts` | File Baru | Server Actions kelola status aktif, peran pengguna, dan hapus akun |
-| 3 | `src/app/admin/users/user-actions.tsx` | File Baru | Komponen client row actions (toggle status, ganti role, hapus, proteksi) |
-| 4 | `src/app/admin/users/page.tsx` | File Baru | Halaman tabel pengguna, tabs counter, pencarian, dan paginasi |
-| 5 | `Planning/daily-log-08-oct-2026.md` | File Baru | Laporan progres harian magang 08 Oktober 2026 |
-| 6 | `Planning/00_index.md` | Dimodifikasi | Pembaruan indeks berkas perencanaan & log harian |
-| 7 | `Planning/progress.md` | Dimodifikasi | Pembaruan status milestone M5 (100% Selesai) & riwayat kerja |
+34: 
+35: ### Sesi Fitur Pelengkap Publik: Breaking News Ticker (C03)
+36: 5. **Komponen Client Ticker (`src/components/berita/breaking-news-ticker.tsx`)**:
+37:    - Carousel horizontal otomatis (interval 5 detik) dengan transisi fade halus.
+38:    - Indikator badge merah berkedip (*pulsating ping dot*) khas warta berita terkini.
+39:    - Interaktivitas: Jeda otomatis saat kursor mouse melayang di atas berita (*pause on hover*), tombol navigasi sebelumnya/selanjutnya, badge kategori berita, dan penomoran counter aktif (`1 / 5`).
+40: 6. **Integrasi Halaman Utama (`src/app/(public)/page.tsx`)**:
+41:    - Ditempatkan tepat di bawah *Hero Section* sebagai elemen transisi visual modern menuju rilis berita terkini.
+42: 
+43: ### Sesi Pengujian & Validasi Kualitas Kode:
+44: 7. **ESLint (`npm run lint`)**: **0 errors, 0 warnings (100% clean)**.
+45: 8. **Next.js Turbopack Build (`npm run build`)**: **100% SUKSES**, total **26 rute** aplikasi terkompilasi optimal tanpa satupun error TypeScript.
+46: 
+47: ---
+48: 
+49: ## 2. Rincian Modul & Fitur yang Diselesaikan Hari Ini
+50: 
+51: | Modul / Fitur | Path / Komponen | Fitur Utama | Status |
+52: |---|---|---|---|
+53: | **Manajemen Pengguna** | `/admin/users` | Filter tab role & status, search, toggle aktif/nonaktif, ubah role admin/member, hapus akun, proteksi superadmin | ✅ Selesai 100% |
+54: | **Breaking News Ticker** | `BreakingNewsTicker` (Beranda) | Running headline berita terkini, auto-cycle 5s, pause on hover, nav controls, category badge | ✅ Selesai 100% |
+55: 
+56: ---
+57: 
+58: ## 3. Rincian File yang Dibuat & Dimodifikasi
+59: 
+60: | No | Path File | Status | Keterangan |
+61: |---|---|---|---|
+62: | 1 | `src/lib/supabase/admin.ts` | File Baru | Utility Supabase Admin Client dengan `SUPABASE_SERVICE_ROLE_KEY` |
+63: | 2 | `src/app/admin/users/actions.ts` | File Baru | Server Actions kelola status aktif, peran pengguna, dan hapus akun |
+64: | 3 | `src/app/admin/users/user-actions.tsx` | File Baru | Komponen client row actions (toggle status, ganti role, hapus, proteksi) |
+65: | 4 | `src/app/admin/users/page.tsx` | File Baru | Halaman tabel pengguna, tabs counter, pencarian, dan paginasi |
+66: | 5 | `src/components/berita/breaking-news-ticker.tsx` | File Baru | Komponen interaktif carousel ticker warta terkini |
+67: | 6 | `src/app/(public)/page.tsx` | Dimodifikasi | Integrasi banner Breaking News Ticker di bawah Hero Section |
+68: | 7 | `Planning/daily-log-08-oct-2026.md` | File Baru | Laporan progres harian magang 08 Oktober 2026 |
+69: | 8 | `Planning/00_index.md` | Dimodifikasi | Pembaruan indeks berkas perencanaan & log harian |
+70: | 9 | `Planning/progress.md` | Dimodifikasi | Pembaruan status milestone M5, fitur C03 selesai, & riwayat kerja |
 
 ---
 
