@@ -144,7 +144,7 @@ export function Navbar() {
                             key={link.href}
                             href={link.href}
                             className={cn(
-                                "px-3 py-1.5 rounded-full text-sm transition-colors font-medium",
+                                "px-2 lg:px-3 py-1.5 rounded-full text-xs lg:text-sm transition-colors font-medium whitespace-nowrap",
                                 isActive
                                     ? "text-brand-gold bg-white/15 font-semibold"
                                     : "text-white/85 hover:text-white hover:bg-white/10"

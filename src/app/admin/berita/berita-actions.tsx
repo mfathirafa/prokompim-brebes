@@ -10,6 +10,7 @@ import {
     XCircle,
     Loader2,
     ExternalLink,
+    Printer,
 } from "lucide-react"
 
 interface BeritaRowActionsProps {
@@ -111,5 +112,19 @@ export function BeritaRowActions({ id, slug, status }: BeritaRowActionsProps) {
                 )}
             </button>
         </div>
+    )
+}
+
+export function PrintButton() {
+    return (
+        <button
+            type="button"
+            onClick={() => window.print()}
+            className="inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl border border-border bg-card hover:bg-muted text-foreground font-semibold text-xs shadow-xs transition-colors cursor-pointer print:hidden"
+            title="Cetak Laporan Rekapitulasi Berita"
+        >
+            <Printer className="w-4 h-4 text-muted-foreground" />
+            <span>Cetak Rekap</span>
+        </button>
     )
 }

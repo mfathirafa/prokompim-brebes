@@ -3,7 +3,7 @@
     import { createClient } from "@/lib/supabase/server"                                                                                                 
     import { formatDate } from "@/lib/utils"                                                                                                             
     import { ADMIN_ITEMS_PER_PAGE } from "@/lib/constants"                                                                                               
-    import { BeritaRowActions } from "./berita-actions"                                                                                                  
+    import { BeritaRowActions, PrintButton } from "./berita-actions"                                                                                                  
     import {                                                                                                                                             
         Plus,                                                                                                                                            
         Newspaper,                                                                                                                                       
@@ -105,14 +105,16 @@
                             Publikasikan, sunting, dan atur berita protokol pimpinan daerah                                                              
                         </p>                                                                                                                             
                     </div>                                                                                                                               
-                    <Link                                                                                                                                
-                        href="/admin/berita/tambah"                                                                                                      
-                        className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-primary text-primary-foreground font-semibold 
-  text-xs shadow-sm hover:bg-primary/90 transition-colors"                                                                                               
-                    >                                                                                                                                    
-                        <Plus className="w-4 h-4" />                                                                                                     
-                        <span>Tambah Berita</span>                                                                                                       
-                    </Link>                                                                                                                              
+                    <div className="flex items-center gap-2.5 print:hidden">
+                        <PrintButton />
+                        <Link
+                            href="/admin/berita/tambah"
+                            className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-primary text-primary-foreground font-semibold text-xs shadow-sm hover:bg-primary/90 transition-colors"
+                        >
+                            <Plus className="w-4 h-4" />
+                            <span>Tambah Berita</span>
+                        </Link>
+                    </div>                                                                                                                              
                 </div>                                                                                                                                   
                                                                                                                                                          
                 {/* Filter Tabs & Search Form */}                                                                                                        
