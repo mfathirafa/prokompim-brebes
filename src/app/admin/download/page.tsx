@@ -2,7 +2,7 @@
     import { createClient } from "@/lib/supabase/server"                                                                                                 
     import { formatDate, formatFileSize } from "@/lib/utils"                                                                                             
     import { ADMIN_ITEMS_PER_PAGE } from "@/lib/constants"                                                                                               
-    import { DownloadRowActions } from "./download-actions"                                                                                              
+    import { DownloadRowActions, DownloadCategoryFilter } from "./download-actions"                                                                                              
     import {                                                                                                                                             
         Plus,                                                                                                                                            
         Download,                                                                                                                                        
@@ -161,27 +161,13 @@
                                                                                                                                                          
                     {/* Filter Kategori & Search */}                                                                                                     
                     <div className="flex flex-col sm:flex-row items-center gap-2 w-full md:w-auto">                                                      
-                        {/* Dropdown Kategori */}                                                                                                        
-                        <form method="GET" action="/admin/download" className="w-full sm:w-auto">                                                        
-                            {status && <input type="hidden" name="status" value={status} />}                                                             
-                            {q && <input type="hidden" name="q" value={q} />}                                                                            
-                            <select                                                                                                                      
-                                name="kategori"                                                                                                          
-                                defaultValue={kategori}                                                                                                  
-                                onChange={(e) => {                                                                                                       
-                                    e.target.form?.submit()                                                                                              
-                                }}                                                                                                                       
-                                className="w-full sm:w-44 px-3 py-1.5 text-xs rounded-xl border border-input bg-background focus:outline-none focus:ring-
-  2 focus:ring-primary/20 focus:border-primary transition-all text-foreground"                                                                           
-                            >                                                                                                                            
-                                <option value="">Semua Kategori</option>                                                                                 
-                                {kategoriList?.map((cat) => (                                                                                            
-                                    <option key={cat.id} value={cat.id}>                                                                                 
-                                        {cat.nama}                                                                                                       
-                                    </option>                                                                                                            
-                                ))}                                                                                                                      
-                            </select>                                                                                                                    
-                        </form>                                                                                                                          
+                        {/* Dropdown Kategori */}
+                        <DownloadCategoryFilter
+                            status={status}
+                            kategori={kategori}
+                            q={q}
+                            kategoriList={kategoriList}
+                        />                                                                                                                          
                                                                                                                                                          
                         {/* Search Input */}                                                                                                             
                         <form method="GET" action="/admin/download" className="relative w-full sm:w-64">                                                 

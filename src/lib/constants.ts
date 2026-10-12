@@ -14,14 +14,15 @@ export const SITE_CONFIG = {
     },
 }
 
-export const NAV_LINKS = [
-    { label: "Beranda", href: "/" },
-    { label: "Berita", href: "/berita" },
-    { label: "Liputan", href: "/liputan" },
-    { label: "Download", href: "/download" },
-    { label: "Penghargaan", href: "/penghargaan" },
-    { label: "Kegiatan", href: "/kegiatan" },
-    { label: "E-Koran", href: "/e-koran" },
+export const NAV_LINKS = [                                                                                                                           
+    { label: "Beranda", href: "/" },                                                                                                                 
+    { label: "Profil", href: "/profil" },                                                                                                            
+    { label: "Berita", href: "/berita" },                                                                                                            
+    { label: "Liputan", href: "/liputan" },                                                                                                          
+    { label: "Download", href: "/download" },                                                                                                        
+    { label: "Penghargaan", href: "/penghargaan" },                                                                                                  
+    { label: "Kegiatan", href: "/kegiatan" },                                                                                                        
+    { label: "E-Koran", href: "/e-koran" },                                                                                                          
 ]
 
 export const ADMIN_SIDEBAR_LINKS = [

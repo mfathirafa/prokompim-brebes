@@ -1,6 +1,6 @@
 # Progress Report — Portal Web Prokompim Brebes
 
-**Terakhir diperbarui:** 08 Oktober 2026  
+**Terakhir diperbarui:** 12 Oktober 2026  
 **Developer:** Rafa (Magang)  
 **Periode:** 13 September – 12 November 2026
 
@@ -74,9 +74,9 @@ Minggu 5–9              ░░░░░░░░░░░░   0%  ⏳ Fitur P
 | ID | Fitur | Status | Keterangan |
 |----|-------|--------|------------|
 | C01 | Agenda Pimpinan | ✅ **Selesai** | Terakomodasi di halaman `/kegiatan` |
-| C02 | Profil Pimpinan | ⏳ Belum | Halaman profil pimpinan daerah |
-| C03 | Breaking News Ticker | ⏳ Belum | Ticker running text di navbar/beranda |
-| C04 | Counter Pengunjung | ⏳ Belum | Counter analitik pengunjung publik |
+| C02 | Profil Pimpinan | ✅ **Selesai** | Halaman profil pimpinan daerah & Prokompim (`/profil`) |
+| C03 | Breaking News Ticker | ✅ **Selesai** | Ticker headline berita terkini terintegrasi di Beranda |
+| C04 | Counter Pengunjung | ✅ **Selesai** | Counter analitik publik & ringkasan statistik keterbukaan informasi di Beranda |
 
 ---
 
@@ -86,6 +86,7 @@ Minggu 5–9              ░░░░░░░░░░░░   0%  ⏳ Fitur P
 |-----------------|-------|------------|
 | Layout Publik (Navbar + Footer) | `(public)/layout.tsx` | Responsif, branding Brebes, auth menu |
 | Beranda | `/` | SSR Supabase, hero, berita, penghargaan, liputan |
+| Profil Pimpinan Daerah | `/profil` | Profil kepala daerah & tugas pokok fungsi Prokompim Setda |
 | Daftar Berita | `/berita` | Card grid, filter kategori, pencarian, pagination |
 | Detail Berita | `/berita/[slug]` | Artikel penuh, berita terkait, view incrementer, komentar |
 | Dokumen Unduhan | `/download` | Tab kategori, pencarian, signed URL download |
@@ -137,19 +138,19 @@ Minggu 5–9              ░░░░░░░░░░░░   0%  ⏳ Fitur P
 | **05 Okt** | **Halaman Edit Berita, Moderasi Komentar, Fix Base UI, & Auth Admin Role JWT** | **Halaman edit berita `/admin/berita/[id]/edit`, modul moderasi komentar `/admin/komentar`, fix Base UI `DropdownMenuLabel`, dan otentikasi role admin via Supabase JWT `app_metadata` tuntas. Lolos build & lint 100%.** |
 | **07 Okt** | **4 Modul Panel Admin Tuntas (Kegiatan, Download, Penghargaan, Liputan)** | **Implementasi penuh Server Actions, Client Row Actions, Formulir Reusable, dan Halaman Routing untuk Kegiatan (`/admin/kegiatan`), Dokumen Unduhan (`/admin/download`), Penghargaan Daerah (`/admin/penghargaan`), serta Galeri Liputan (`/admin/liputan`). Total 25 rute terkompilasi, 0 lint error, 100% lolos build.** |
 | **08 Okt** | **Modul Panel Admin Terakhir Tuntas (Kelola Pengguna & Akses)** | **Implementasi modul Manajemen Pengguna (`/admin/users`), Server Actions proteksi admin, sinkronisasi role JWT auth metadata, client row actions, filter role & status, dan paginasi server-side. Total 26 rute terkompilasi, 0 lint error, 100% lolos build.** |
+| **12 Okt** | **Fitur Profil Pimpinan Daerah (`/profil`) & Ticker Berita Publik** | **Implementasi halaman profil pimpinan daerah & Bagian Prokompim (`/profil`), integrasi tautan navigasi global (Navbar/Footer), dan integrasi Breaking News Ticker warta berita. Total 27 rute terkompilasi, 0 TypeScript error, 100% build lolos.** |
 
 ---
 
 ## Rencana Kerja Selanjutnya
 
 ### Sesi Terdekat
-1. **Penyempurnaan Fitur Pelengkap (Could Have)**:
-   - Breaking News Ticker pada Beranda & Navbar
-   - Halaman Profil Pimpinan Daerah
+1. **Fitur Pelengkap & Analitik (Could Have)**:
+   - Counter Pengunjung Publik / Ringkasan Analitik Pembaca (C04)
 2. **Integrasi & Persiapan Demo**:
    - Penggabungan (*merge*) branch `feat/admin-panel` ke `main`
    - Sinkronisasi deployment rilis produksi ke Vercel
-   - Evaluasi pasca demo prototype V1 bersama stakeholder Prokompim
+   - Evaluasi pasca demo prototype bersama stakeholder Prokompim Setda Brebes
 
 ---
 
@@ -165,6 +166,7 @@ Minggu 5–9              ░░░░░░░░░░░░   0%  ⏳ Fitur P
 | 22 Sep | TS2339 referensi `berita.profiles` pada build time | ✅ Diperbaiki (fallback static string author) |
 | 05 Okt | Crash Base UI `MenuGroupContext` pada `DropdownMenuLabel` | ✅ Diperbaiki (refactor ke custom div) |
 | 05 Okt | Postgres error 42501 (permission denied) pada tabel `profiles` | ✅ Diperbaiki (migrasi ke role JWT `app_metadata`) |
+| 12 Okt | Runtime Error 500 admin/download (event handler di Server Component) | ✅ Diperbaiki (ekstraksi ke `DownloadCategoryFilter` client component) |
 
 ---
 

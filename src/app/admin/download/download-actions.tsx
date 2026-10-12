@@ -128,4 +128,40 @@
                 </button>                                                                                                                                
             </div>                                                                                                                                       
         )                                                                                                                                                
-    }                  
+    }
+
+interface DownloadCategoryFilterProps {
+    status?: string
+    kategori?: string
+    q?: string
+    kategoriList?: { id: number; nama: string }[] | null
+}
+
+export function DownloadCategoryFilter({
+    status = "",
+    kategori = "",
+    q = "",
+    kategoriList = [],
+}: DownloadCategoryFilterProps) {
+    return (
+        <form method="GET" action="/admin/download" className="w-full sm:w-auto">
+            {status && <input type="hidden" name="status" value={status} />}
+            {q && <input type="hidden" name="q" value={q} />}
+            <select
+                name="kategori"
+                defaultValue={kategori}
+                onChange={(e) => {
+                    e.target.form?.submit()
+                }}
+                className="w-full sm:w-44 px-3 py-1.5 text-xs rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-foreground"
+            >
+                <option value="">Semua Kategori</option>
+                {kategoriList?.map((cat) => (
+                    <option key={cat.id} value={cat.id}>
+                        {cat.nama}
+                    </option>
+                ))}
+            </select>
+        </form>
+    )
+}                  
