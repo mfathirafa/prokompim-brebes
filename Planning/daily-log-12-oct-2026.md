@@ -88,9 +88,11 @@ Hari ini fokus pada penuntasan seluruh fitur pelengkap publik (*Could Have*), pe
 | 6 | `src/app/layout.tsx` | Dimodifikasi | Integrasi metadata `SITE_CONFIG`, Open Graph, dan `lang="id"` |
 | 7 | `src/app/not-found.tsx` | File Baru | Halaman kustom 404 Not Found resmi bernuansa Brebes |
 | 8 | `src/app/(public)/loading.tsx` | File Baru | Indikator loading transisi halaman publik |
-| 9 | `Planning/daily-log-12-oct-2026.md` | File Baru | Laporan progres harian magang 12 Oktober 2026 |
-| 10 | `Planning/00_index.md` | Dimodifikasi | Pembaruan indeks berkas perencanaan & log harian 12 Okt |
-| 11 | `Planning/progress.md` | Dimodifikasi | Pembaruan status seluruh fitur (Must Have, Should Have, Could Have) 100% tuntas |
+| 9 | `Planning/demo_checklist.md` | File Baru | Panduan skenario demo prototype & lembar evaluasi stakeholder |
+| 10 | `Planning/user_manual_admin.md` | File Baru | Buku panduan operasional penggunaan panel admin (8 modul) |
+| 11 | `Planning/daily-log-12-oct-2026.md` | File Baru | Laporan progres harian magang 12 Oktober 2026 |
+| 12 | `Planning/00_index.md` | Dimodifikasi | Pembaruan indeks berkas perencanaan & log harian 12 Okt |
+| 13 | `Planning/progress.md` | Dimodifikasi | Pembaruan status seluruh fitur (Must Have, Should Have, Could Have) 100% tuntas |
 
 ---
 

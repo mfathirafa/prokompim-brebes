@@ -17,6 +17,8 @@ Portal Web Prokompim Brebes — Sistem Informasi Release Berita dan Layanan Prot
 | 07 | [erd.md](./erd.md) | Entity Relationship Diagram database |
 | 08 | [referensi.md](./referensi.md) | Daftar link referensi prokompim daerah lain |
 | 09 | [git_branching_strategy.md](./git_branching_strategy.md) | Panduan alur branching dan commit Git (SDLC Prototype) |
+| 10 | [demo_checklist.md](./demo_checklist.md) | Panduan skenario demo prototype & lembar evaluasi stakeholder |
+| 11 | [user_manual_admin.md](./user_manual_admin.md) | Buku panduan operasional penggunaan panel admin (8 modul) |
 
 ---
 
@@ -38,7 +40,7 @@ Portal Web Prokompim Brebes — Sistem Informasi Release Berita dan Layanan Prot
 | 05 Oktober 2026 | [daily-log-05-oct-2026.md](./daily-log-05-oct-2026.md) | Form edit berita, modul moderasi komentar, fix Base UI, auth role JWT |
 | 07 Oktober 2026 | [daily-log-07-oct-2026.md](./daily-log-07-oct-2026.md) | 4 Modul Admin Selesai (Kegiatan, Download, Penghargaan, Liputan) & pembersihan linting |
 | 08 Oktober 2026 | [daily-log-08-oct-2026.md](./daily-log-08-oct-2026.md) | Modul Manajemen Pengguna (`/admin/users`) selesai 100%, seluruh 8 modul panel admin lengkap |
-| 12 Oktober 2026 | [daily-log-12-oct-2026.md](./daily-log-12-oct-2026.md) | Fitur Profil Pimpinan Daerah (`/profil`) & Ticker Berita Publik tuntas (27 rute build lolos) |
+| 12 Oktober 2026 | [daily-log-12-oct-2026.md](./daily-log-12-oct-2026.md) | Fitur Profil Pimpinan (`/profil`), C04 Statistik Publik, Bugfix RSC Admin Download, Custom 404 & Loading State (100% Fitur Tuntas) |
 
 ---
 
@@ -52,4 +54,4 @@ Portal Web Prokompim Brebes — Sistem Informasi Release Berita dan Layanan Prot
 | Periode Magang | 13 September 2026 - 12 November 2026 |
 | Model SDLC | Prototype |
 | Tech Stack | Next.js 16 + Supabase + Vercel |
-| Status | Fase 3 - Prototype Fase 1 (Seluruh Halaman Publik Utama Selesai, Siap Demo) |
+| Status | Fase 3 - Prototype Lengkap (Seluruh Fitur Publik & 8 Modul Panel Admin 100% Selesai, Siap Demo) |
