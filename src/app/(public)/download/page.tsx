@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import { FileText, Download, Search, FolderOpen, FileDown } from "lucide-react";
+import { Search, FolderOpen, FileDown } from "lucide-react";
 import { DownloadCard } from "@/components/download/download-card";
 import { Button } from "@/components/ui/button";
 

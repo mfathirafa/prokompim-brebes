@@ -57,6 +57,12 @@ export default function AdminLayout({
 
     // Ambil user auth & data profile dari tabel profiles
     useEffect(() => {
+        function resolveProfile(currentUser: User, dbData: { nama: string; role: string } | null) {
+            const role = (currentUser.app_metadata?.role || dbData?.role || "admin") as string
+            const nama = dbData?.nama || (currentUser.user_metadata?.nama as string | undefined) || currentUser.email?.split("@")[0] || "Administrator"
+            return { nama, role }
+        }
+
         async function loadAdminProfile() {
             const {
                 data: { user: currentUser },
@@ -71,7 +77,9 @@ export default function AdminLayout({
                     .eq("id", currentUser.id)
                     .single()
 
-                if (data) setProfile(data)
+                setProfile(resolveProfile(currentUser, data))
+            } else {
+                setProfile(null)
             }
         }
 
@@ -88,7 +96,7 @@ export default function AdminLayout({
                     .select("nama, role")
                     .eq("id", currentUser.id)
                     .single()
-                setProfile(data)
+                setProfile(resolveProfile(currentUser, data))
             } else {
                 setProfile(null)
             }

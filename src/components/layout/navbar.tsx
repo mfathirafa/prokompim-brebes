@@ -32,6 +32,15 @@ export function Navbar() {
     const [profile, setProfile] = useState<{ nama: string; role: string } | null>(null)
     const [mobileOpen, setMobileOpen] = useState(false)
 
+    // Helper: bangun profile dari user JWT + data DB (jika ada)
+    function buildProfile(currentUser: User, dbData: { nama: string; role: string } | null) {
+        const jwtRole = currentUser.app_metadata?.role as string | undefined
+        return {
+            nama: dbData?.nama || currentUser.email || "Pengguna",
+            role: jwtRole || dbData?.role || "member",
+        }
+    }
+
     const pathname = usePathname()
     const router = useRouter()
     const supabase = createClient()
@@ -57,7 +66,9 @@ export function Navbar() {
                     .select("nama, role")
                     .eq("id", currentUser.id)
                     .single()
-                if (data) setProfile(data)
+                setProfile(buildProfile(currentUser, data))
+            } else {
+                setProfile(null)
             }
         }
         loadUser()
@@ -72,7 +83,7 @@ export function Navbar() {
                         .select("nama, role")
                         .eq("id", currentUser.id)
                         .single()
-                    setProfile(data)
+                    setProfile(buildProfile(currentUser, data))
                 } else {
                     setProfile(null)
                 }

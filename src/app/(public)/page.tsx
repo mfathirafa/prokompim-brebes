@@ -4,55 +4,88 @@ import { createClient } from "@/lib/supabase/server";
 import { Button } from "@/components/ui/button";
 import { formatDate } from "@/lib/utils";
 import { BeritaCard } from "@/components/berita/berita-card";
-import {
-  Newspaper,
-  Camera,
-  ArrowRight,
-  Trophy,
-  Calendar,
-  Building2
-} from "lucide-react";
+import { BreakingNewsTicker } from "@/components/berita/breaking-news-ticker";
+import {                                         
+      Newspaper,                                     
+      Camera,                                        
+      ArrowRight,                                    
+      Trophy,                                        
+      Calendar,                                      
+      Building2,                                     
+      FileText,                                      
+      Eye,                                           
+} from "lucide-react";   
 
 export const revalidate = 60; // Cache ISR 60 detik
 
 export default async function HomePage() {
   const supabase = await createClient();
 
-  // 1. Fetch 6 Berita Terbaru
-  const { data: beritaList } = await supabase
-    .from("berita")
-    .select(`
-      id,
-      judul,
-      slug,
-      ringkasan,
-      gambar_url,
-      views,
-      published_at,
-      kategori_berita (
-        nama,
-        warna
-      )  
-    `)
-    .eq("status", "published")
-    .order("published_at", { ascending: false })
-    .limit(6);
+    // 1. Fetch data publik & statistik portal secara paralel
+  const [
+    { data: beritaList },
+    { data: penghargaanList },
+    { data: liputanList },
+    { count: totalBeritaCount },
+    { count: totalDownloadCount },
+    { count: totalKegiatanCount },
+    { data: beritaViewsData },
+  ] = await Promise.all([
+    supabase
+      .from("berita")
+      .select(`
+        id,
+        judul,
+        slug,
+        ringkasan,
+        gambar_url,
+        views,
+        published_at,
+        kategori_berita (
+          nama,
+          warna
+        )  
+      `)
+      .eq("status", "published")
+      .order("published_at", { ascending: false })
+      .limit(6),
 
-  // 2. Fetch Penghargaan Aktif
-  const { data: penghargaanList } = await supabase
+    supabase
       .from("penghargaan")
       .select("id, judul, deskripsi, instansi_pemberi, penerima, tingkat, tanggal, gambar_url")
       .eq("is_active", true)
       .order("tanggal", { ascending: false })
-      .limit(6);
-  
-  // 3. Fetch 6 Liputan Dokumentasi Pimpinan
-  const { data: liputanList } = await supabase
+      .limit(6),
+
+    supabase
       .from("liputan")
       .select("id, judul, deskripsi, tanggal, cover_url")
       .eq("is_active", true)
       .order("tanggal", { ascending: false })
-      .limit(6);
+      .limit(6),
+
+    supabase
+      .from("berita")
+      .select("*", { count: "exact", head: true })
+      .eq("status", "published"),
+
+    supabase
+      .from("files_download")
+      .select("*", { count: "exact", head: true })
+      .eq("is_active", true),
+
+    supabase
+      .from("kegiatan")
+      .select("*", { count: "exact", head: true })
+      .eq("is_active", true),
+
+    supabase
+      .from("berita")
+      .select("views")
+      .eq("status", "published"),
+  ]);
+
+  const totalPembacaViews = beritaViewsData?.reduce((acc, curr) => acc + (curr.views || 0), 0) ?? 0;
 
   return (
     <div className="flex flex-col flex-1">
@@ -105,6 +138,72 @@ export default async function HomePage() {
               <Camera className="w-4 h-4" />
               Galeri Liputan
             </Button>
+          </div>
+        </div>
+      </section>
+
+            {/* --- BREAKING NEWS TICKER --- */}
+      {beritaList && beritaList.length > 0 && (
+        <BreakingNewsTicker
+          items={beritaList.map((b) => ({
+            id: b.id,
+            judul: b.judul,
+            slug: b.slug,
+            published_at: b.published_at,
+            kategori: b.kategori_berita,
+          }))}
+        />
+      )}
+
+      {/* --- SECTION STATISTIK & RINGKASAN PORTAL (C04) --- */}
+      <section className="bg-background border-b border-border py-8 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="flex items-center gap-3.5 p-4 rounded-2xl bg-card border border-border shadow-xs">
+            <div className="p-3 rounded-xl bg-primary/10 text-primary">
+              <Newspaper className="w-5 h-5" />
+            </div>
+            <div>
+              <p className="text-xl sm:text-2xl font-extrabold text-foreground tracking-tight">
+                {totalBeritaCount ?? 0}
+              </p>
+              <p className="text-xs text-muted-foreground font-medium">Rilis Berita Terbit</p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3.5 p-4 rounded-2xl bg-card border border-border shadow-xs">
+            <div className="p-3 rounded-xl bg-brand-sky/15 text-brand-sky">
+              <Eye className="w-5 h-5" />
+            </div>
+            <div>
+              <p className="text-xl sm:text-2xl font-extrabold text-foreground tracking-tight">
+                {totalPembacaViews.toLocaleString("id-ID")}
+              </p>
+              <p className="text-xs text-muted-foreground font-medium">Total Pembaca Artikel</p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3.5 p-4 rounded-2xl bg-card border border-border shadow-xs">
+            <div className="p-3 rounded-xl bg-brand-gold/15 text-brand-gold">
+              <FileText className="w-5 h-5" />
+            </div>
+            <div>
+              <p className="text-xl sm:text-2xl font-extrabold text-foreground tracking-tight">
+                {totalDownloadCount ?? 0}
+              </p>
+              <p className="text-xs text-muted-foreground font-medium">Naskah Sambutan & Dokumen</p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3.5 p-4 rounded-2xl bg-card border border-border shadow-xs">
+            <div className="p-3 rounded-xl bg-emerald-500/10 text-emerald-600">
+              <Calendar className="w-5 h-5" />
+            </div>
+            <div>
+              <p className="text-xl sm:text-2xl font-extrabold text-foreground tracking-tight">
+                {totalKegiatanCount ?? 0}
+              </p>
+              <p className="text-xs text-muted-foreground font-medium">Agenda & Kegiatan Pimpinan</p>
+            </div>
           </div>
         </div>
       </section>
