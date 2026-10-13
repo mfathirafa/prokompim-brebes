@@ -10,6 +10,7 @@
         XCircle,                                                                                                                                         
         Loader2,                                                                                                                                         
         FileDown,                                                                                                                                        
+        Printer,                                                                                                                                         
     } from "lucide-react"                                                                                                                                
                                                                                                                                                          
     interface DownloadRowActionsProps {                                                                                                                  
@@ -165,3 +166,17 @@ export function DownloadCategoryFilter({
         </form>
     )
 }                  
+export function PrintDownloadButton() {
+    return (
+        <button
+            type="button"
+            onClick={() => window.print()}
+            className="inline-flex items-center justify-center gap-2 px-3.5 py-2 rounded-xl border border-border bg-card hover:bg-muted text-foreground font-semibold text-xs shadow-xs transition-colors cursor-pointer print:hidden"
+            title="Cetak Rekapitulasi Dokumen Unduhan"
+        >
+            <Printer className="w-4 h-4 text-muted-foreground" />
+            <span>Cetak Rekap</span>
+        </button>
+    )
+}
+

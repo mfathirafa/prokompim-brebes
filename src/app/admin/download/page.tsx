@@ -2,7 +2,7 @@
     import { createClient } from "@/lib/supabase/server"                                                                                                 
     import { formatDate, formatFileSize } from "@/lib/utils"                                                                                             
     import { ADMIN_ITEMS_PER_PAGE } from "@/lib/constants"                                                                                               
-    import { DownloadRowActions, DownloadCategoryFilter } from "./download-actions"                                                                                              
+    import { DownloadRowActions, DownloadCategoryFilter, PrintDownloadButton } from "./download-actions"                                                                                              
     import {                                                                                                                                             
         Plus,                                                                                                                                            
         Download,                                                                                                                                        
@@ -121,14 +121,16 @@
                             Daftar file sambutan pimpinan, tata upacara, dan pedoman protokoler resmi.                                                   
                         </p>                                                                                                                             
                     </div>                                                                                                                               
-                    <Link                                                                                                                                
-                        href="/admin/download/tambah"                                                                                                    
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-primary-foreground text-xs font-semibold hover:bg-
-  primary/90 transition-all shadow-sm w-fit"                                                                                                             
-                    >                                                                                                                                    
-                        <Plus className="w-4 h-4" />                                                                                                     
-                        <span>Tambah Dokumen</span>                                                                                                      
-                    </Link>                                                                                                                              
+                    <div className="flex items-center gap-2.5 print:hidden">
+                        <PrintDownloadButton />
+                        <Link
+                            href="/admin/download/tambah"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-primary-foreground text-xs font-semibold hover:bg-primary/90 transition-all shadow-sm w-fit"
+                        >
+                            <Plus className="w-4 h-4" />
+                            <span>Tambah Dokumen</span>
+                        </Link>
+                    </div>                                                                                                                              
                 </div>                                                                                                                                   
                                                                                                                                                          
                 {/* Filter Tab, Kategori Dropdown & Search */}                                                                                           
@@ -197,7 +199,7 @@
                                     <th className="p-4">Tanggal Kegiatan</th>                                                                            
                                     <th className="p-4 text-center">Unduhan</th>                                                                         
                                     <th className="p-4">Status</th>                                                                                      
-                                    <th className="p-4 text-right">Aksi</th>                                                                             
+                                    <th className="p-4 text-right print:hidden">Aksi</th>                                                                             
                                 </tr>                                                                                                                    
                             </thead>                                                                                                                     
                             <tbody className="divide-y divide-border/60">                                                                                
@@ -263,7 +265,7 @@
                                             </td>                                                                                                        
                                                                                                                                                          
                                             {/* Aksi Baris */}                                                                                           
-                                            <td className="p-4 whitespace-nowrap text-right">                                                            
+                                            <td className="p-4 whitespace-nowrap text-right print:hidden">                                                            
                                                 <DownloadRowActions id={item.id} isActive={item.is_active} />                                            
                                             </td>                                                                                                        
                                         </tr>                                                                                                            

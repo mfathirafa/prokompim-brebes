@@ -9,6 +9,7 @@ import {
     CheckCircle2,
     XCircle,
     Loader2,
+    Printer,
 } from "lucide-react"
 
 interface KegiatanRowActionsProps {
@@ -98,5 +99,19 @@ export function KegiatanRowActions({ id, isActive }: KegiatanRowActionsProps) {
                 )}
             </button>
         </div>
+    )
+}
+
+export function PrintAgendaButton() {
+    return (
+        <button
+            type="button"
+            onClick={() => window.print()}
+            className="inline-flex items-center justify-center gap-2 px-3.5 py-2 rounded-xl border border-border bg-card hover:bg-muted text-foreground font-semibold text-xs shadow-xs transition-colors cursor-pointer print:hidden"
+            title="Cetak Lembar Jadwal Agenda Pimpinan"
+        >
+            <Printer className="w-4 h-4 text-muted-foreground" />
+            <span>Cetak Agenda</span>
+        </button>
     )
 }

@@ -2,7 +2,7 @@ import Link from "next/link"
     import { createClient } from "@/lib/supabase/server"                                                                                                 
     import { formatDate } from "@/lib/utils"                                                                                                             
     import { ADMIN_ITEMS_PER_PAGE } from "@/lib/constants"                                                                                               
-    import { KegiatanRowActions } from "./kegiatan-actions"                                                                                              
+    import { KegiatanRowActions, PrintAgendaButton } from "./kegiatan-actions"                                                                                              
     import {                                                                                                                                             
         Plus,                                                                                                                                            
         Calendar,                                                                                                                                        
@@ -106,14 +106,16 @@ import Link from "next/link"
                             Daftar jadwal acara resmi, upacara, dan agenda pimpinan Pemerintah Kabupaten Brebes.                                         
                         </p>                                                                                                                             
                     </div>                                                                                                                               
-                    <Link                                                                                                                                
-                        href="/admin/kegiatan/tambah"                                                                                                    
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-primary-foreground text-xs font-semibold hover:bg-
-  primary/90 transition-all shadow-sm w-fit"                                                                                                             
-                    >                                                                                                                                    
-                        <Plus className="w-4 h-4" />                                                                                                     
-                        <span>Tambah Kegiatan</span>                                                                                                     
-                    </Link>                                                                                                                              
+                    <div className="flex items-center gap-2.5 print:hidden">
+                        <PrintAgendaButton />
+                        <Link
+                            href="/admin/kegiatan/tambah"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-primary-foreground text-xs font-semibold hover:bg-primary/90 transition-all shadow-sm w-fit"
+                        >
+                            <Plus className="w-4 h-4" />
+                            <span>Tambah Kegiatan</span>
+                        </Link>
+                    </div>                                                                                                                              
                 </div>                                                                                                                                   
                                                                                                                                                          
                 {/* Filter Tab & Form Pencarian */}                                                                                                      
@@ -169,7 +171,7 @@ import Link from "next/link"
                                     <th className="p-4">Judul & Jenis</th>                                                                               
                                     <th className="p-4">Lokasi & Pimpinan</th>                                                                           
                                     <th className="p-4">Status</th>                                                                                      
-                                    <th className="p-4 text-right">Aksi</th>                                                                             
+                                    <th className="p-4 text-right print:hidden">Aksi</th>                                                                             
                                 </tr>                                                                                                                    
                             </thead>                                                                                                                     
                             <tbody className="divide-y divide-border/60">                                                                                
@@ -243,7 +245,7 @@ import Link from "next/link"
                                             </td>                                                                                                        
                                                                                                                                                          
                                             {/* Kolom Aksi Row */}                                                                                       
-                                            <td className="p-4 whitespace-nowrap text-right">                                                            
+                                            <td className="p-4 whitespace-nowrap text-right print:hidden">                                                            
                                                 <KegiatanRowActions id={item.id} isActive={item.is_active} />                                            
                                             </td>                                                                                                        
                                         </tr>                                                                                                            

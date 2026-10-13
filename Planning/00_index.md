@@ -19,6 +19,7 @@ Portal Web Prokompim Brebes — Sistem Informasi Release Berita dan Layanan Prot
 | 09 | [git_branching_strategy.md](./git_branching_strategy.md) | Panduan alur branching dan commit Git (SDLC Prototype) |
 | 10 | [demo_checklist.md](./demo_checklist.md) | Panduan skenario demo prototype & lembar evaluasi stakeholder |
 | 11 | [user_manual_admin.md](./user_manual_admin.md) | Buku panduan operasional penggunaan panel admin (8 modul) |
+| 12 | [feedback-evaluasi-demo.md](./feedback-evaluasi-demo.md) | Notulensi evaluasi demo & umpan balik stakeholder |
 
 ---
 
