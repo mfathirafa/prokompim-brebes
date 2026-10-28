@@ -90,7 +90,7 @@ export default async function HomePage() {
   return (
     <div className="flex flex-col flex-1">
       {/* --- HERO SECTION --- */}
-      <section className="relative min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-primary via-primary/95 to-brand-sky text-white px-4 pt-28 pb-20 overflow-hidden">
+      <section className="relative min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-primary via-primary/95 to-brand-sky dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 text-white px-4 pt-28 pb-20 overflow-hidden">
         {/* Ornamen Latar Belakang */}
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 

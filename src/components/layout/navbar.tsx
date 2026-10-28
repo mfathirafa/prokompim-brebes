@@ -106,7 +106,7 @@ export function Navbar() {
             className={cn(
                 "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
                 isScrolled
-                    ? "bg-primary/95 backdrop-blur-md shadow-md py-3 border-b border-white/10"
+                    ? "bg-primary/95 dark:bg-slate-950/90 backdrop-blur-md shadow-md py-3 border-b border-white/10 dark:border-white/10"
                     : "bg-gradient-to-b from-black/60 via-black/20 to-transparent py-5"
             )}
         >
@@ -236,7 +236,7 @@ export function Navbar() {
                         >
                             <Menu className="w-6 h-6" />
                         </SheetTrigger>
-                        <SheetContent side="right" className="bg-primary text-white border-l-white/10 w-72 flex flex-col p-6">
+                        <SheetContent side="right" className="bg-primary dark:bg-slate-950 text-white border-l-white/10 dark:border-border w-72 flex flex-col p-6">
                             <SheetHeader className="text-left pb-4 border-b border-white/10">
                                 <SheetTitle className="flex items-center gap-2.5 text-white">
                                     <Image src="/logo.png" alt="Logo" width={28} height={28} className="w-7 h-auto" />

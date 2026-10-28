@@ -188,11 +188,14 @@ export default async function AdminDashboardPage() {
                     <div className="flex items-center justify-between mb-4">
                         <div>
                             <h2 className="text-base font-bold text-foreground flex items-center gap-2">
-                                <TrendingUp className="w-4 h-4 text-primary" />
+                                <TrendingUp className="w-4 h-4 text-emerald-500" />
                                 Views Berita
                             </h2>
                             <p className="text-xs text-muted-foreground">Akumulasi per bulan (6 bulan terakhir)</p>
                         </div>
+                        <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                            {chartData.reduce((acc, curr) => acc + curr.views, 0).toLocaleString("id-ID")} Views
+                        </span>
                     </div>
                     <ViewsChart data={chartData} />
                 </section>

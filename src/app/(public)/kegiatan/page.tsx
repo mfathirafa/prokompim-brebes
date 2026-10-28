@@ -34,7 +34,7 @@ export default async function KegitanPage() {
     return (
         <div className="flex flex-col flex-1 pb-20">
             {/* Header Banner */}
-            <section className="bg-gradient-to-r from-primary via-primary/95 to-brand-sky text-white pt-32 pb-16 px-4 sm:px-6 lg:px-8">
+            <section className="bg-gradient-to-r from-primary via-primary/95 to-brand-sky dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 text-white pt-32 pb-16 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto space-y-4">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-brand-gold text-xs font-semibold uppercase tracking-wider">
                         <CalendarDays className="w-3.5 h-3.5" />

@@ -127,65 +127,61 @@ export default async function ActivityLogPage({ searchParams }: PageProps) {
       </div>
 
       {/* Filter Bar */}
-      <div className="flex flex-wrap gap-3 p-4 bg-muted/30 border border-border rounded-xl">
-        <div className="flex flex-col gap-1 min-w-[140px]">
-          <label className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-            Jenis Aksi
+      <form method="GET" action="/admin/activity-log" className="flex flex-wrap items-center gap-3 p-4 bg-card border border-border rounded-xl">
+        <div className="flex items-center gap-2">
+          <label htmlFor="action" className="text-xs font-semibold text-muted-foreground whitespace-nowrap">
+            Jenis Aksi:
           </label>
-          <a
-            href={buildUrl({ action: "", page: "1" })}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
-              !actionFilter
-                ? "bg-primary text-primary-foreground border-primary"
-                : "bg-background border-border text-muted-foreground hover:text-foreground"
-            }`}
+          <select
+            id="action"
+            name="action"
+            defaultValue={actionFilter}
+            className="px-3 py-1.5 rounded-lg text-xs bg-background border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
           >
-            Semua Aksi
-          </a>
-          {Object.entries(ACTION_LABELS).map(([key, label]) => (
-            <a
-              key={key}
-              href={buildUrl({ action: key, page: "1" })}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
-                actionFilter === key
-                  ? "bg-primary text-primary-foreground border-primary"
-                  : "bg-background border-border text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {label}
-            </a>
-          ))}
+            <option value="">Semua Aksi</option>
+            {Object.entries(ACTION_LABELS).map(([k, l]) => (
+              <option key={k} value={k}>
+                {l}
+              </option>
+            ))}
+          </select>
         </div>
 
-        <div className="flex flex-col gap-1 min-w-[140px]">
-          <label className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-            Modul
+        <div className="flex items-center gap-2">
+          <label htmlFor="resource" className="text-xs font-semibold text-muted-foreground whitespace-nowrap">
+            Modul:
           </label>
-          <a
-            href={buildUrl({ resource: "", page: "1" })}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
-              !resourceFilter
-                ? "bg-primary text-primary-foreground border-primary"
-                : "bg-background border-border text-muted-foreground hover:text-foreground"
-            }`}
+          <select
+            id="resource"
+            name="resource"
+            defaultValue={resourceFilter}
+            className="px-3 py-1.5 rounded-lg text-xs bg-background border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
           >
-            Semua Modul
-          </a>
-          {Object.entries(RESOURCE_LABELS).map(([key, label]) => (
-            <a
-              key={key}
-              href={buildUrl({ resource: key, page: "1" })}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
-                resourceFilter === key
-                  ? "bg-primary text-primary-foreground border-primary"
-                  : "bg-background border-border text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {label}
-            </a>
-          ))}
+            <option value="">Semua Modul</option>
+            {Object.entries(RESOURCE_LABELS).map(([k, l]) => (
+              <option key={k} value={k}>
+                {l}
+              </option>
+            ))}
+          </select>
         </div>
-      </div>
+
+        <button
+          type="submit"
+          className="px-4 py-1.5 bg-primary text-primary-foreground text-xs font-semibold rounded-lg hover:bg-primary/90 transition-colors shadow-xs"
+        >
+          Terapkan
+        </button>
+
+        {(actionFilter || resourceFilter) && (
+          <a
+            href="/admin/activity-log"
+            className="px-3 py-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Reset Filter
+          </a>
+        )}
+      </form>
 
       {/* Tabel Log */}
       <div className="border border-border rounded-xl overflow-hidden bg-card">

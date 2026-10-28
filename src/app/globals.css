@@ -92,27 +92,27 @@
   --popover:                hsl(222 38% 9%);
   --popover-foreground:     hsl(210 25% 92%);
 
-  /* Primary: biru GELAP agar navbar/tombol tidak menyilaukan */
-  --primary:                hsl(200 55% 22%);
-  --primary-foreground:     hsl(200 40% 88%);
+  /* Primary: Biru Brebes elegan dengan kontras optimal untuk tombol & teks */
+  --primary:                hsl(199 85% 45%);
+  --primary-foreground:     hsl(0 0% 100%);
 
   --secondary:              hsl(200 18% 13%);
-  --secondary-foreground:   hsl(200 25% 70%);
+  --secondary-foreground:   hsl(200 25% 75%);
   --accent:                 hsl(200 18% 16%);
-  --accent-foreground:      hsl(200 25% 70%);
+  --accent-foreground:      hsl(200 25% 75%);
   --muted:                  hsl(200 18% 12%);
-  --muted-foreground:       hsl(200 12% 48%);
-  --destructive:            hsl(0 58% 35%);
+  --muted-foreground:       hsl(200 12% 55%);
+  --destructive:            hsl(0 62% 42%);
   --destructive-foreground: hsl(0 0% 98%);
   --border:                 hsl(200 16% 16%);
   --input:                  hsl(200 16% 16%);
-  --ring:                   hsl(198 55% 40%);
+  --ring:                   hsl(199 85% 45%);
 
-  /* Brand — sedikit lebih lembut di dark */
-  --brand-sky:              hsl(198 65% 45%);
-  --brand-red:              hsl(358 62% 50%);
-  --brand-gold:             hsl(45 82% 50%);
-  --brand-green:            hsl(132 42% 38%);
+  /* Brand Colors */
+  --brand-sky:              hsl(198 80% 50%);
+  --brand-red:              hsl(358 68% 54%);
+  --brand-gold:             hsl(45 88% 52%);
+  --brand-green:            hsl(132 45% 42%);
 }
 
 @layer base {
