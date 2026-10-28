@@ -247,3 +247,33 @@ export async function deleteBerita(id: string) {
                                                                                                                                                          
         return { success: true }                                                                                                                         
     }                              
+
+
+/**
+ * Server action: Ambil seluruh data berita untuk ekspor Excel / CSV
+ */
+export async function getBeritaForExport() {
+    const supabase = await createClient()
+
+    const { data, error } = await supabase
+        .from("berita")
+        .select(`
+            judul,
+            slug,
+            ringkasan,
+            views,
+            status,
+            created_at,
+            published_at,
+            kategori_berita (
+                nama
+            )
+        `)
+        .order("created_at", { ascending: false })
+
+    if (error) {
+        throw new Error(`Gagal memuat data ekspor berita: ${error.message}`)
+    }
+
+    return data || []
+}

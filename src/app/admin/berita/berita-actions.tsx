@@ -2,7 +2,8 @@
 
 import { useState, useTransition } from "react"
 import Link from "next/link"
-import { toggleBeritaStatus, deleteBerita } from "./actions"
+import { toggleBeritaStatus, deleteBerita, getBeritaForExport } from "./actions"
+import { exportToCsv } from "@/lib/export-csv"
 import {
     Pencil,
     Trash2,
@@ -11,6 +12,7 @@ import {
     Loader2,
     ExternalLink,
     Printer,
+    FileSpreadsheet,
 } from "lucide-react"
 
 interface BeritaRowActionsProps {
@@ -38,7 +40,7 @@ export function BeritaRowActions({ id, slug, status }: BeritaRowActionsProps) {
 
     const handleDelete = () => {
         const confirmed = window.confirm(
-            "Apakah anda yakin ingin menghapus berita ini beserta seluruh komentar di dalamanya? Tindakan ini tidak dapat dibatalkan."
+            "Apakah anda yakin ingin menghapus berita ini beserta seluruh komentar di dalamnya? Tindakan ini tidak dapat dibatalkan."
         )
         if (!confirmed) return
 
@@ -76,7 +78,6 @@ export function BeritaRowActions({ id, slug, status }: BeritaRowActionsProps) {
                     status === "published"
                         ? "text-emerald-600 hover:bg-emerald-500/10"
                         : "text-amber-600 hover:bg-amber-500/10"
-                 
                 }`}
             >
                 {isPending && actionType === "toggle" ? (
@@ -125,6 +126,68 @@ export function PrintButton() {
         >
             <Printer className="w-4 h-4 text-muted-foreground" />
             <span>Cetak Rekap</span>
+        </button>
+    )
+}
+
+export function ExportBeritaButton() {
+    const [isExporting, setIsExporting] = useState(false)
+
+    const handleExport = async () => {
+        try {
+            setIsExporting(true)
+            const data = await getBeritaForExport()
+            if (!data || data.length === 0) {
+                alert("Tidak ada data berita yang dapat diekspor.")
+                return
+            }
+
+            const headers = [
+                "No",
+                "Judul Berita",
+                "Kategori",
+                "Status",
+                "Total Pembaca",
+                "Ringkasan",
+                "Tanggal Terbit",
+                "Tanggal Dibuat",
+            ]
+
+            const rows = data.map((item: any, index: number) => [
+                index + 1,
+                item.judul,
+                item.kategori_berita?.nama || "Umum",
+                item.status === "published" ? "Published" : "Draft",
+                item.views ?? 0,
+                item.ringkasan || "-",
+                item.published_at ? new Date(item.published_at).toLocaleDateString("id-ID") : "-",
+                item.created_at ? new Date(item.created_at).toLocaleDateString("id-ID") : "-",
+            ])
+
+            const today = new Date().toISOString().slice(0, 10)
+            exportToCsv(`rekap-rilis-berita-${today}.csv`, headers, rows)
+        } catch (err) {
+            console.error("Export error:", err)
+            alert(err instanceof Error ? err.message : "Gagal mengekspor data berita.")
+        } finally {
+            setIsExporting(false)
+        }
+    }
+
+    return (
+        <button
+            type="button"
+            onClick={handleExport}
+            disabled={isExporting}
+            className="inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl border border-emerald-600/30 bg-emerald-50 dark:bg-emerald-950/20 hover:bg-emerald-100 dark:hover:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 font-semibold text-xs shadow-xs transition-colors cursor-pointer disabled:opacity-50 print:hidden"
+            title="Ekspor seluruh data rilis berita ke format Excel / CSV"
+        >
+            {isExporting ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+            ) : (
+                <FileSpreadsheet className="w-4 h-4" />
+            )}
+            <span>{isExporting ? "Mengekspor..." : "Ekspor Excel / CSV"}</span>
         </button>
     )
 }

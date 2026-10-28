@@ -142,3 +142,22 @@
                                                                                                                                                          
         return { success: true }                                                                                                                         
     }                                     
+
+
+/**
+ * Server action: Ambil seluruh data kegiatan untuk ekspor Excel / CSV
+ */
+export async function getKegiatanForExport() {
+    const supabase = await createClient()
+
+    const { data, error } = await supabase
+        .from("kegiatan")
+        .select("judul, jenis, lokasi, pimpinan, tanggal_mulai, tanggal_selesai, deskripsi, is_active, created_at")
+        .order("tanggal_mulai", { ascending: false })
+
+    if (error) {
+        throw new Error(`Gagal memuat data ekspor: ${error.message}`)
+    }
+
+    return data || []
+}

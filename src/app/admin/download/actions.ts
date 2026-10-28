@@ -277,3 +277,34 @@
                                                                                                                                                          
         return { success: true }                                                                                                                         
     }                                  
+
+
+/**
+ * Server action: Ambil seluruh data dokumen unduhan untuk ekspor Excel / CSV
+ */
+export async function getDownloadsForExport() {
+    const supabase = await createClient()
+
+    const { data, error } = await supabase
+        .from("files_download")
+        .select(`
+            judul,
+            file_name,
+            file_size,
+            file_type,
+            download_count,
+            tanggal_kegiatan,
+            is_active,
+            created_at,
+            kategori_download (
+                nama
+            )
+        `)
+        .order("created_at", { ascending: false })
+
+    if (error) {
+        throw new Error(`Gagal memuat data ekspor: ${error.message}`)
+    }
+
+    return data || []
+}
