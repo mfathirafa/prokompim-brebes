@@ -14,15 +14,15 @@ export const SITE_CONFIG = {
     },
 }
 
-export const NAV_LINKS = [                                                                                                                           
-    { label: "Beranda", href: "/" },                                                                                                                 
-    { label: "Profil", href: "/profil" },                                                                                                            
-    { label: "Berita", href: "/berita" },                                                                                                            
-    { label: "Liputan", href: "/liputan" },                                                                                                          
-    { label: "Download", href: "/download" },                                                                                                        
-    { label: "Penghargaan", href: "/penghargaan" },                                                                                                  
-    { label: "Kegiatan", href: "/kegiatan" },                                                                                                        
-    { label: "E-Koran", href: "/e-koran" },                                                                                                          
+export const NAV_LINKS = [
+    { label: "Beranda", href: "/" },
+    { label: "Profil", href: "/profil" },
+    { label: "Berita", href: "/berita" },
+    { label: "Liputan", href: "/liputan" },
+    { label: "Download", href: "/download" },
+    { label: "Penghargaan", href: "/penghargaan" },
+    { label: "Kegiatan", href: "/kegiatan" },
+    { label: "E-Koran", href: "/e-koran" },
 ]
 
 export const ADMIN_SIDEBAR_LINKS = [
@@ -31,9 +31,11 @@ export const ADMIN_SIDEBAR_LINKS = [
     { label: "Download", href: "/admin/download", icon: "Download" },
     { label: "Penghargaan", href: "/admin/penghargaan", icon: "Trophy" },
     { label: "Kegiatan", href: "/admin/kegiatan", icon: "Calendar" },
-    { label: "Liputan", href:"/admin/liputan", icon: "Camera" },
-    { label: "Komentar", href:"/admin/komentar", icon: "MessageSquare" },
+    { label: "Liputan", href: "/admin/liputan", icon: "Camera" },
+    { label: "E-Koran", href: "/admin/ekoran", icon: "BookOpen" },
+    { label: "Komentar", href: "/admin/komentar", icon: "MessageSquare" },
     { label: "Pengguna", href: "/admin/users", icon: "Users" },
+    { label: "Activity Log", href: "/admin/activity-log", icon: "ClipboardList" },
 ]
 
 export const STORAGE_BUCKETS = {

@@ -8,6 +8,7 @@ import { SITE_CONFIG, NAV_LINKS } from "@/lib/constants"
 import { createClient } from "@/lib/supabase/client"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { ThemeToggle } from "@/components/ui/theme-toggle"
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -76,7 +77,7 @@ export function Navbar() {
         const { data: { subscription } } = supabase.auth.onAuthStateChange(
             async (_event, session) => {
                 const currentUser = session?.user ?? null
-                setUser(currentUser) 
+                setUser(currentUser)
                 if (currentUser) {
                     const { data } = await supabase
                         .from("profiles")
@@ -89,7 +90,7 @@ export function Navbar() {
                 }
             }
         )
-        
+
         return () => subscription.unsubscribe()
     }, [supabase])
 
@@ -135,10 +136,10 @@ export function Navbar() {
                 {/* Desktop Navigation Links */}
                 <nav className="hidden md:flex items-center gap-1 lg:gap-2">
                     {NAV_LINKS.map((link) => {
-                        const isActive = 
-                            pathname === link.href || 
+                        const isActive =
+                            pathname === link.href ||
                             (link.href !== "/" && pathname.startsWith(link.href))
-                    
+
                     return (
                         <Link
                             key={link.href}
@@ -156,8 +157,11 @@ export function Navbar() {
                     })}
                 </nav>
 
-                {/* Desktop User Auth State */}
-                <div className="hidden md:flex items-center gap-3">
+                {/* Desktop User Auth State + Theme Toggle */}
+                <div className="hidden md:flex items-center gap-2">
+                    {/* Dark Mode Toggle */}
+                    <ThemeToggle variant="pill" />
+
                     {user ? (
                         <DropdownMenu>
                             <DropdownMenuTrigger className="flex items-center gap-2 text-white hover:bg-white/15 rounded-full px-3 py-1.5 h-auto cursor-pointer transition-colors">
@@ -197,7 +201,7 @@ export function Navbar() {
                                     <Download className="w-4 h-4 text-brand-sky" />
                                     <span>Dokumen Unduhan</span>
                                 </DropdownMenuItem>
-                                
+
                                 <DropdownMenuSeparator />
                                 <DropdownMenuItem
                                     onClick={handleLogout}
@@ -221,7 +225,10 @@ export function Navbar() {
                 </div>
 
                 {/* Mobile Hamburger Menu (Sheet) */}
-                <div className="md:hidden flex items-center">
+                <div className="md:hidden flex items-center gap-2">
+                    {/* Dark Mode Toggle Mobile */}
+                    <ThemeToggle variant="pill" />
+
                     <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
                         <SheetTrigger
                             className="p-2 text-white hover:bg-white/10 rounded-lg inline-flex items-center justify-center transition-colors cursor-pointer"
@@ -240,7 +247,7 @@ export function Navbar() {
                             <div className="flex-1 py-6 flex flex-col justify-between">
                                 <nav className="flex flex-col space-y-2">
                                     {NAV_LINKS.map((link) => {
-                                        const isActive = 
+                                        const isActive =
                                             pathname === link.href ||
                                             (link.href !== "/" && pathname.startsWith(link.href))
 
@@ -252,8 +259,8 @@ export function Navbar() {
                                             className={cn(
                                                 "px-3 py-2 rounded-lg text-sm transition-colors",
                                                 isActive
-                                                   ? "bg-white/15 text-brand-gold font-semibold"    
-                                                   : "text-white/80 hover:bg-white/10 hover:text-white"                                            
+                                                   ? "bg-white/15 text-brand-gold font-semibold"
+                                                   : "text-white/80 hover:bg-white/10 hover:text-white"
                                             )}
                                         >
                                             {link.label}
@@ -296,7 +303,7 @@ export function Navbar() {
                                             render={<Link href="/login" />}
                                             className="w-full bg-brand-gold hover:bg-brand-gold/90 text-zinc-950 font-semibold"
                                             onClick={() => setMobileOpen(false)}
-                                        >   
+                                        >
                                             Masuk ke Akun
                                         </Button>
                                     )}
@@ -305,7 +312,7 @@ export function Navbar() {
                         </SheetContent>
                     </Sheet>
                 </div>
-                
+
                 </div>
             </div>
         </header>

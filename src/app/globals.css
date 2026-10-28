@@ -55,58 +55,65 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-:root {                                                                                                             
-      --background:             hsl(0 0% 100%);                                                                         
-      --foreground:             hsl(222 47% 11%);                                                                       
-      --card:                   hsl(0 0% 100%);                                                                         
-      --card-foreground:        hsl(222 47% 11%);                                                                       
-      --popover:                hsl(0 0% 100%);                                                                         
-      --popover-foreground:     hsl(222 47% 11%);                                                                       
-      --primary:                hsl(200 82% 33%);                                                                       
-      --primary-foreground:     hsl(0 0% 100%);                                                                         
-      --secondary:              hsl(200 40% 94%);                                                                       
-      --secondary-foreground:   hsl(200 82% 25%);                                                                       
-      --accent:                 hsl(200 30% 92%);                                                                       
-      --accent-foreground:      hsl(200 82% 25%);                                                                       
-      --muted:                  hsl(200 20% 96%);                                                                       
-      --muted-foreground:       hsl(200 10% 45%);                                                                       
-      --destructive:            hsl(0 84% 40%);                                                                         
-      --destructive-foreground: hsl(0 0% 100%);                                                                         
-      --border:                 hsl(200 20% 88%);                                                                       
-      --input:                  hsl(200 20% 88%);                                                                       
-      --ring:                   hsl(200 82% 33%);                                                                       
-      --radius:                 0.5rem;                                                                                 
-      --brand-sky:              hsl(198 76% 52%);                                                                       
-      --brand-red:              hsl(358 77% 45%);                                                                       
-      --brand-gold:             hsl(48 100% 48%);                                                                       
-      --brand-green:            hsl(132 48% 32%);                                                                       
-    }                                                                                                                   
-                                                                                                                        
-    .dark {                                                                                                             
-      --background:             hsl(222 47% 6%);                                                                        
-      --foreground:             hsl(210 40% 98%);                                                                       
-      --card:                   hsl(222 47% 8%);                                                                        
-      --card-foreground:        hsl(210 40% 98%);                                                                       
-      --popover:                hsl(222 47% 8%);                                                                        
-      --popover-foreground:     hsl(210 40% 98%);                                                                       
-      --primary:                hsl(198 76% 52%);                                                                       
-      --primary-foreground:     hsl(0 0% 100%);                                                                         
-      --secondary:              hsl(200 20% 15%);                                                                       
-      --secondary-foreground:   hsl(200 40% 80%);                                                                       
-      --accent:                 hsl(200 20% 18%);                                                                       
-      --accent-foreground:      hsl(200 40% 80%);                                                                       
-      --muted:                  hsl(200 20% 15%);                                                                       
-      --muted-foreground:       hsl(200 20% 55%);                                                                       
-      --destructive:            hsl(0 63% 31%);                                                                         
-      --destructive-foreground: hsl(0 0% 100%);                                                                         
-      --border:                 hsl(200 20% 20%);                                                                       
-      --input:                  hsl(200 20% 20%);                                                                       
-      --ring:                   hsl(198 76% 52%);                                                                       
-      --brand-sky:              hsl(198 76% 55%);                                                                       
-      --brand-red:              hsl(358 77% 55%);                                                                       
-      --brand-gold:             hsl(48 90% 55%);                                                                        
-      --brand-green:            hsl(132 48% 45%);                                                                       
-    }            
+/* ─── Light Mode ─── */
+:root {
+  --background:             hsl(0 0% 100%);
+  --foreground:             hsl(222 47% 11%);
+  --card:                   hsl(0 0% 100%);
+  --card-foreground:        hsl(222 47% 11%);
+  --popover:                hsl(0 0% 100%);
+  --popover-foreground:     hsl(222 47% 11%);
+  --primary:                hsl(200 82% 33%);
+  --primary-foreground:     hsl(0 0% 100%);
+  --secondary:              hsl(200 40% 94%);
+  --secondary-foreground:   hsl(200 82% 25%);
+  --accent:                 hsl(200 30% 92%);
+  --accent-foreground:      hsl(200 82% 25%);
+  --muted:                  hsl(200 20% 96%);
+  --muted-foreground:       hsl(200 10% 45%);
+  --destructive:            hsl(0 84% 40%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --border:                 hsl(200 20% 88%);
+  --input:                  hsl(200 20% 88%);
+  --ring:                   hsl(200 82% 33%);
+  --radius:                 0.5rem;
+  --brand-sky:              hsl(198 76% 52%);
+  --brand-red:              hsl(358 77% 45%);
+  --brand-gold:             hsl(48 100% 48%);
+  --brand-green:            hsl(132 48% 32%);
+}
+
+/* ─── Dark Mode ─── */
+.dark {
+  --background:             hsl(222 40% 6%);
+  --foreground:             hsl(210 25% 92%);
+  --card:                   hsl(222 38% 9%);
+  --card-foreground:        hsl(210 25% 92%);
+  --popover:                hsl(222 38% 9%);
+  --popover-foreground:     hsl(210 25% 92%);
+
+  /* Primary: biru GELAP agar navbar/tombol tidak menyilaukan */
+  --primary:                hsl(200 55% 22%);
+  --primary-foreground:     hsl(200 40% 88%);
+
+  --secondary:              hsl(200 18% 13%);
+  --secondary-foreground:   hsl(200 25% 70%);
+  --accent:                 hsl(200 18% 16%);
+  --accent-foreground:      hsl(200 25% 70%);
+  --muted:                  hsl(200 18% 12%);
+  --muted-foreground:       hsl(200 12% 48%);
+  --destructive:            hsl(0 58% 35%);
+  --destructive-foreground: hsl(0 0% 98%);
+  --border:                 hsl(200 16% 16%);
+  --input:                  hsl(200 16% 16%);
+  --ring:                   hsl(198 55% 40%);
+
+  /* Brand — sedikit lebih lembut di dark */
+  --brand-sky:              hsl(198 65% 45%);
+  --brand-red:              hsl(358 62% 50%);
+  --brand-gold:             hsl(45 82% 50%);
+  --brand-green:            hsl(132 42% 38%);
+}
 
 @layer base {
   * {

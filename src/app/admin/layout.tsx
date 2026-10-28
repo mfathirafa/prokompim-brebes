@@ -25,9 +25,13 @@ import {
     Users,
     Menu,
     LogOut,
-    ExternalLink
+    ExternalLink,
+    ClipboardList,
 } from "lucide-react"
+import { ThemeToggle } from "@/components/ui/theme-toggle"
+import { NotifBadge } from "@/components/admin/notif-badge"
 import type { User } from "@supabase/supabase-js"
+import { BookOpen } from "lucide-react"
 
 // Map icon Lucide sesuai nama icon di ADMIN_SIDEBAR_LINKS
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -39,6 +43,8 @@ const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
     Camera,
     MessageSquare,
     Users,
+    ClipboardList,
+    BookOpen,
 }
 
 export default function AdminLayout({
@@ -105,7 +111,7 @@ export default function AdminLayout({
         return () => subscription.unsubscribe()
     }, [supabase])
 
-    // Aksi Logout 
+    // Aksi Logout
     const handleLogout = async () => {
         try {
             setIsLoggingOut(true)
@@ -140,7 +146,7 @@ export default function AdminLayout({
                         onClick={onLinkClick}
                         className="flex items-center gap-3 group"
                     >
-                        <Image 
+                        <Image
                             src="/logo.png"
                             alt="Logo Brebes"
                             width={36}
@@ -180,7 +186,7 @@ export default function AdminLayout({
                                         : "text-muted-foreground hover:bg-muted/80 hover:text-foreground border-l-2 border-transparent"
                                 )}
                             >
-                                <Icon className={cn("w-4 h-4 shrink-0", active ? "text-primary" : "text-muted-foreground")} />      
+                                <Icon className={cn("w-4 h-4 shrink-0", active ? "text-primary" : "text-muted-foreground")} />
                                 <span>{link.label}</span>
                             </Link>
                         )
@@ -210,7 +216,7 @@ export default function AdminLayout({
                     onClick={handleLogout}
                     disabled={isLoggingOut}
                     className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-semibold text-destructive hover:bg-destructive/10 transition-colors cursor-pointer disabled:opacity-50"
-                >   
+                >
                     <LogOut className="w-4 h-4 shrink-0" />
                     <span>{isLoggingOut ? "Keluar..." : "Keluar (Logout)"}</span>
                 </button>
@@ -228,7 +234,7 @@ export default function AdminLayout({
             {/* Area Konten Kanan */}
             <div className="flex-1 flex flex-col md:pl-64 min-w-0">
                 {/* Topbar */}
-                <header className="sticky top-0  z-30 h-16 border-b border-border bg-background/95 backdrop-blur-md px-4 sm:px-6 flex items-center justify-between">
+                <header className="sticky top-0 z-30 h-16 border-b border-border bg-background/95 backdrop-blur-md px-4 sm:px-6 flex items-center justify-between">
                     <div className="flex items-center gap-3">
                         {/* Hamburger Sheet Mobile */}
                         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
@@ -259,8 +265,14 @@ export default function AdminLayout({
                         </div>
                     </div>
 
-                    {/* User Profil Info */}
-                    <div className="flex items-center gap-3">
+                    {/* User Profil Info + Theme Toggle + Notif */}
+                    <div className="flex items-center gap-2">
+                        {/* Notifikasi Komentar Realtime */}
+                        <NotifBadge />
+
+                        {/* Dark Mode Toggle */}
+                        <ThemeToggle />
+
                         <div className="text-right hidden sm:block">
                             <p className="text-xs font-semibold text-foreground leading-tight">
                                 {profile?.nama || "Administrator"}

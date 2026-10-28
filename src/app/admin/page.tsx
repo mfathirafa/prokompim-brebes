@@ -8,7 +8,10 @@ import {
     MessageSquare,
     ArrowRight,
     Eye,
+    TrendingUp,
+    BookOpen,
 } from "lucide-react"
+import { ViewsChart } from "@/components/admin/views-chart"
 
 export const metadata = {
     title: "Dashboard Admin | Prokompim Brebes",
@@ -17,7 +20,7 @@ export const metadata = {
 export default async function AdminDashboardPage() {
     const supabase = await createClient()
 
-    // Fetch 4 stats & data tabel secara paralel di server
+    // Fetch stats, tabel, dan data chart secara paralel
     const [
         { count: totalBeritaPublished },
         { count: totalFileDownload },
@@ -25,6 +28,8 @@ export default async function AdminDashboardPage() {
         { count: totalKomentarPending },
         { data: latestBerita },
         { data: pendingKomentar },
+        { data: topBerita },
+        { data: allBeritaViews },
     ] = await Promise.all([
         supabase
             .from("berita")
@@ -41,7 +46,7 @@ export default async function AdminDashboardPage() {
         supabase
             .from("komentar")
             .select("*", { count: "exact", head: true })
-            .eq("is_approved", false),            
+            .eq("is_approved", false),
         supabase
             .from("berita")
             .select(`
@@ -72,13 +77,48 @@ export default async function AdminDashboardPage() {
             `)
             .eq("is_approved", false)
             .order("created_at", { ascending: false })
-            .limit(5)
+            .limit(5),
+        // Top 5 berita terpopuler
+        supabase
+            .from("berita")
+            .select("judul, slug, views, kategori_berita(nama)")
+            .eq("status", "published")
+            .order("views", { ascending: false })
+            .limit(5),
+        // Semua berita published untuk aggregate views per bulan
+        supabase
+            .from("berita")
+            .select("published_at, views")
+            .eq("status", "published")
+            .not("published_at", "is", null)
+            .order("published_at", { ascending: true })
+            .limit(500),
     ])
 
-    // Konfigurasi 4 Stats Card dengan warna brand
+    // Aggregate views per bulan (6 bulan terakhir)
+    const monthsMap: Record<string, number> = {}
+    const now = new Date()
+    for (let i = 5; i >= 0; i--) {
+        const d = new Date(now.getFullYear(), now.getMonth() - i, 1)
+        const key = d.toLocaleDateString("id-ID", { month: "short", year: "2-digit" })
+        monthsMap[key] = 0
+    }
+
+    ;(allBeritaViews ?? []).forEach((b) => {
+        if (!b.published_at) return
+        const d = new Date(b.published_at)
+        const key = d.toLocaleDateString("id-ID", { month: "short", year: "2-digit" })
+        if (key in monthsMap) {
+            monthsMap[key] += b.views ?? 0
+        }
+    })
+
+    const chartData = Object.entries(monthsMap).map(([bulan, views]) => ({ bulan, views }))
+
+    // Konfigurasi 4 Stats Card
     const stats = [
         {
-            label: "Total Berita Published",
+            label: "Berita Published",
             count: totalBeritaPublished ?? 0,
             icon: Newspaper,
             accentBorder: "border-l-primary",
@@ -86,7 +126,7 @@ export default async function AdminDashboardPage() {
             href: "/admin/berita?status=published",
         },
         {
-            label: "Total File Download",
+            label: "File Download",
             count: totalFileDownload ?? 0,
             icon: Download,
             accentBorder: "border-l-brand-sky",
@@ -113,7 +153,7 @@ export default async function AdminDashboardPage() {
 
     return (
         <div className="space-y-8">
-            {/* 4 Stats Cards (2x2 Grid di layar sedang/kecil, 4 Kolom di layar besar) */}
+            {/* 4 Stats Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                 {stats.map((stat, idx) => {
                     const Icon = stat.icon
@@ -139,6 +179,73 @@ export default async function AdminDashboardPage() {
                         </Link>
                     )
                 })}
+            </div>
+
+            {/* Chart Views + Top Berita */}
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+                {/* Bar Chart Views 6 Bulan */}
+                <section className="lg:col-span-3 bg-card rounded-2xl border border-border shadow-xs p-5">
+                    <div className="flex items-center justify-between mb-4">
+                        <div>
+                            <h2 className="text-base font-bold text-foreground flex items-center gap-2">
+                                <TrendingUp className="w-4 h-4 text-primary" />
+                                Views Berita
+                            </h2>
+                            <p className="text-xs text-muted-foreground">Akumulasi per bulan (6 bulan terakhir)</p>
+                        </div>
+                    </div>
+                    <ViewsChart data={chartData} />
+                </section>
+
+                {/* Top 5 Berita Terpopuler */}
+                <section className="lg:col-span-2 bg-card rounded-2xl border border-border shadow-xs overflow-hidden flex flex-col">
+                    <div className="p-5 border-b border-border flex items-center justify-between">
+                        <div>
+                            <h2 className="text-base font-bold text-foreground flex items-center gap-2">
+                                <Eye className="w-4 h-4 text-brand-sky" />
+                                Top Berita
+                            </h2>
+                            <p className="text-xs text-muted-foreground">5 berita paling banyak dibaca</p>
+                        </div>
+                        <Link
+                            href="/admin/berita"
+                            className="text-xs font-semibold text-primary hover:underline inline-flex items-center gap-1"
+                        >
+                            Semua
+                            <ArrowRight className="w-3.5 h-3.5" />
+                        </Link>
+                    </div>
+                    <div className="flex-1 divide-y divide-border">
+                        {topBerita && topBerita.length > 0 ? (
+                            topBerita.map((item, idx) => (
+                                <Link
+                                    key={item.slug}
+                                    href={`/berita/${item.slug}`}
+                                    target="_blank"
+                                    className="flex items-center gap-3 px-5 py-3.5 hover:bg-muted/30 transition-colors group"
+                                >
+                                    <span className="text-xl font-black text-muted-foreground/30 w-6 shrink-0 tabular-nums">
+                                        {idx + 1}
+                                    </span>
+                                    <div className="flex-1 min-w-0">
+                                        <p className="text-xs font-semibold text-foreground truncate group-hover:text-primary transition-colors">
+                                            {item.judul}
+                                        </p>
+                                        <p className="text-[11px] text-muted-foreground">
+                                            {(item.kategori_berita as { nama?: string } | null)?.nama ?? "Umum"}
+                                        </p>
+                                    </div>
+                                    <span className="text-xs font-bold text-muted-foreground whitespace-nowrap flex items-center gap-1">
+                                        <Eye className="w-3 h-3" />
+                                        {(item.views ?? 0).toLocaleString("id-ID")}
+                                    </span>
+                                </Link>
+                            ))
+                        ) : (
+                            <div className="p-8 text-center text-sm text-muted-foreground">Belum ada data.</div>
+                        )}
+                    </div>
+                </section>
             </div>
 
             {/* Grid 2 Kolom: Berita Terbaru & Komentar Pending */}
@@ -192,7 +299,7 @@ export default async function AdminDashboardPage() {
                                                 </Link>
                                             </td>
                                             <td className="px-4 py-3 text-muted-foreground whitespace-nowrap">
-                                                {item.kategori_berita?.nama || "Umum"}
+                                                {(item.kategori_berita as { nama?: string } | null)?.nama || "Umum"}
                                             </td>
                                             <td className="px-4 py-3 text-muted-foreground whitespace-nowrap">
                                                 <span className="inline-flex items-center gap-1">
@@ -274,8 +381,8 @@ export default async function AdminDashboardPage() {
                                             <td className="px-4 py-3 text-muted-foreground max-w-[180px] truncate" title={item.isi}>
                                                 &ldquo;{item.isi}&rdquo;
                                             </td>
-                                            <td className="px-4 py-3 text-muted-foreground max-w-[140px] truncate" title={item.berita?.judul || "-"}>
-                                                {item.berita?.judul || "-"}
+                                            <td className="px-4 py-3 text-muted-foreground max-w-[140px] truncate" title={(item.berita as { judul?: string } | null)?.judul || "-"}>
+                                                {(item.berita as { judul?: string } | null)?.judul || "-"}
                                             </td>
                                             <td className="px-4 py-3 text-muted-foreground whitespace-nowrap">
                                                 {item.created_at ? formatDate(item.created_at) : "-"}

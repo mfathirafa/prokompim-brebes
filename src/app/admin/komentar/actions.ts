@@ -2,6 +2,7 @@
 
 import { createClient } from "@/lib/supabase/server"
 import { revalidatePath } from "next/cache"
+import { logActivity } from "@/lib/log-activity"
 
 /**
  * Setujui komentar pengunjung agar tayang di website publik
@@ -9,14 +10,28 @@ import { revalidatePath } from "next/cache"
 export async function approveKomentar(id: string) {
     const supabase = await createClient()
 
+    const { data: komentar } = await supabase
+        .from("komentar")
+        .select("nama, isi")
+        .eq("id", id)
+        .single()
+
     const { error } = await supabase
         .from("komentar")
         .update({ is_approved: true })
         .eq("id", id)
-    
+
     if (error) {
         throw new Error(`Gagal menyetujui komentar: ${error.message}`)
     }
+
+    await logActivity({
+        supabase,
+        actionType: "approve",
+        resourceType: "komentar",
+        resourceId: id,
+        resourceTitle: komentar ? `${komentar.nama}: "${String(komentar.isi).slice(0, 50)}"` : undefined,
+    })
 
     revalidatePath("/admin/komentar")
     revalidatePath("/admin")
@@ -31,6 +46,12 @@ export async function approveKomentar(id: string) {
 export async function rejectKomentar(id: string) {
     const supabase = await createClient()
 
+    const { data: komentar } = await supabase
+        .from("komentar")
+        .select("nama, isi")
+        .eq("id", id)
+        .single()
+
     const { error } = await supabase
         .from("komentar")
         .update({ is_approved: false })
@@ -39,6 +60,14 @@ export async function rejectKomentar(id: string) {
     if (error) {
         throw new Error(`Gagal membatalkan persetujuan komentar: ${error.message}`)
     }
+
+    await logActivity({
+        supabase,
+        actionType: "reject",
+        resourceType: "komentar",
+        resourceId: id,
+        resourceTitle: komentar ? `${komentar.nama}: "${String(komentar.isi).slice(0, 50)}"` : undefined,
+    })
 
     revalidatePath("/admin/komentar")
     revalidatePath("/admin")
@@ -53,6 +82,12 @@ export async function rejectKomentar(id: string) {
 export async function deleteKomentar(id: string) {
     const supabase = await createClient()
 
+    const { data: komentar } = await supabase
+        .from("komentar")
+        .select("nama, isi")
+        .eq("id", id)
+        .single()
+
     const { error } = await supabase
         .from("komentar")
         .delete()
@@ -61,6 +96,14 @@ export async function deleteKomentar(id: string) {
     if (error) {
         throw new Error(`Gagal menghapus komentar: ${error.message}`)
     }
+
+    await logActivity({
+        supabase,
+        actionType: "delete",
+        resourceType: "komentar",
+        resourceId: id,
+        resourceTitle: komentar ? `${komentar.nama}: "${String(komentar.isi).slice(0, 50)}"` : undefined,
+    })
 
     revalidatePath("/admin/komentar")
     revalidatePath("/admin")
